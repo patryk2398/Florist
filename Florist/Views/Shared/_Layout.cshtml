@@ -6,29 +6,67 @@
     <title>@ViewData["Title"] - Florist</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/menu.css" />
+    <script src="script/menu.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Florist</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white">
+            <div style="display: flex; align-items: center; margin: 20px 20px;">
+                <img src="~/img/logo.png" height=70px;/>
+                <div id="menu">
+                    <div id="cssmenu">
+                        <ul>
+                            <li class="selected"><a href='index.html'><span>Strona główna</span></a></li>
+                            <li class='active has-sub'>
+                                <a href='oferta.html'><span>Kwiaty</span></a><span class="rozwin">+</span>
+                                <ul>
+                                    <li><a href='tworzenie-stron.html'><span>Róże</span></a></li>
+                                    <li><a href='grafika.html'><span>Słoneczniki</span></a></li>
+                                    <li><a href='pozycjonowanie.html'><span>Gerbery</span></a></li>
+                                    <li><a href='pozycjonowanie.html'><span>Bukiety mieszane</span></a></li>
+                                </ul>
+                            </li>
+                            <li class='active has-sub'>
+                                <a href='portfolio.html'><span>Okazje</span></a><span class="rozwin">+</span>
+                                <ul>
+                                    <li><a href='strony.html'><span>Miłość</span></a></li>
+                                    <li><a href='wizytowki.html'><span>Urodziny</span></a></li>
+                                    <li><a href='loga.html'><span>Rocznica</span></a></li>
+                                    <li><a href='bannery.html'><span>Gratualcje</span></a></li>
+                                    <li><a href='ulotki.html'><span>Kondolencje</span></a></li>
+                                </ul>
+                            </li>
+                            <li class='active has-sub'>
+                                <a href='portfolio.html'><span>Flowerboxy</span></a><span class="rozwin">+</span>
+                                <ul>
+                                    <li><a href='strony.html'><span>Róże w pudełku</span></a></li>
+                                    <li><a href='wizytowki.html'><span>Goździki w pudełku</span></a></li>
+                                    <li><a href='loga.html'><span>Kwiaty mieszane w pudełku</span></a></li>
+                                </ul>
+                            </li>
+                            <li class='active has-sub'>
+                                <a href='portfolio.html'><span>Prezenty</span></a><span class="rozwin">+</span>
+                                <ul>
+                                    <li><a href='strony.html'><span>Misie z róż</span></a></li>
+                                    <li><a href='wizytowki.html'><span>Słodkie bukiety</span></a></li>
+                                    <li><a href='loga.html'><span>Zestawy kaw i herbat</span></a></li>
+                                    <li><a href='bannery.html'><span>Kosze prezentowe</span></a></li>
+                                    <li><a href='ulotki.html'><span>Balony z helem</span></a></li>
+                                </ul>
+                            </li>
+                            <li class='last'><a href='kontakt.html'><span>Kontakt</span></a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </nav>
+        <div>
+            <img src="~/img/sunflower.jpg" style="width: 100%;"/>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -44,6 +82,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/menu.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
