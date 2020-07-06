@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <div id="nav1"  class="">
+        <div id="nav1" class="">
             <div style="display: flex; align-items: center; margin: 20px 20px;">
                 <a asp-area="Customer" asp-controller="Home" asp-action="Index">
                     <img src="~/img/logo.png" height=60px; />
@@ -24,7 +24,7 @@
                             <li class='active has-sub'>
                                 <a href='oferta.html'><span>Kwiaty</span></a><span class="rozwin">+</span>
                                 <ul>
-                                    <li><a href='tworzenie-stron.html'><span>Róże</span></a></li>
+                                    <li><a asp-action="Index" asp-controller="Flower" asp-area="Admin"><span>Róże</span></a></li>
                                     <li><a href='grafika.html'><span>Słoneczniki</span></a></li>
                                     <li><a href='pozycjonowanie.html'><span>Gerbery</span></a></li>
                                     <li><a href='pozycjonowanie.html'><span>Bukiety mieszane</span></a></li>
@@ -71,7 +71,7 @@
             <!-- Navbar brand -->
             <a asp-area="Customer" asp-controller="Home" asp-action="Index">
                 <img src="~/img/logo.png" style="height: 40px;" />
-            </a>           
+            </a>
             <!-- Collapse button -->
             <button style="float:right; border:none;" class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
                     aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,6 +162,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/144por3hcjyah2m4jzi3gsfywpvihxm2aecsoj9jlgeb0mgq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

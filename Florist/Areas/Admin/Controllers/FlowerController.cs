@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Florist.Data;
+using Florist.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,12 @@ namespace Florist.Areas.Admin.Controllers
         {
             var Flower = await _db.Flower.ToListAsync();
             return View(Flower);
+        }
+
+        //GET - CREATE
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }
