@@ -10,7 +10,7 @@
     <script src="script/menu.js"></script>
     <script src="https://kit.fontawesome.com/41074f745e.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="d-flex flex-column" style="min-height: 100vh">
     <header>
         <div id="nav1" class="">
             <div style="display: flex; align-items: center; margin: 20px 20px;">
@@ -147,14 +147,14 @@
             </a>
         </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div id="content" class="container">
+        <main role="main" class="flex-fill">
             @RenderBody()
         </main>
     </div>
-    <footer class="footer text-muted">
-        <div class="container">
-            &copy; 2020 - Florist - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer text-muted" style="display:contents;">
+        <div style="height:400px; background-color: #006400;">
+            
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
