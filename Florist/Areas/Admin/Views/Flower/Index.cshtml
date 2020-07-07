@@ -19,10 +19,13 @@
         {
             @foreach (var item in Model)
             {
-                <a class="recommend">
+                <a asp-action="Details" asp-route-Id="@item.Id" class="recommend">
                     <img src="@Html.DisplayFor(m => item.Image)" alt="photo">
                     <div style="color: #006400;">@Html.DisplayFor(m => item.Name)</div>
                     <div>@Html.DisplayFor(m => item.Price) PLN</div>
+                </a>
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@item.Id">
+                    <i class="fas fa-edit"></i>
                 </a>
             }
         }
