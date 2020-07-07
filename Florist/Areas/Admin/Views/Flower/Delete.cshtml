@@ -1,0 +1,20 @@
+﻿@model Florist.Models.Flower
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<form asp-action="Delete">
+    <div class="row col-12" style="font-family:'Lucida Sans Unicode';">
+        <img src="@Model.Image" width="100%" class="col-6" />
+        <div class="col-6">
+            <h2 class="col-12">@Model.Name</h2>
+            <label class="col-12">@Model.Description</label>
+            <h2 class="col-12">@Model.Price,00zł</h2>
+        </div>
+    </div>
+    <div class="form-group row offset-6 col-12">
+        <input type="submit" value="Usuń" class="btn btn-danger form-control col-2" />
+        <a asp-action="Index" class="btn btn-success text-white form-control col-2 offset-1">Powrót</a>
+    </div>
+</form>
+

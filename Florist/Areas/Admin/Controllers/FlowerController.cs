@@ -112,7 +112,7 @@ namespace Florist.Areas.Admin.Controllers
 
             string webRootPath = _webHostEnvironment.WebRootPath;
             var files = HttpContext.Request.Form.Files;
-            var PlaceFromdb = _db.Flower.Find(flower.Id);
+            var FlowerFromdb = _db.Flower.Find(flower.Id);
 
             if (files.Count == 0)
             {
@@ -141,8 +141,8 @@ namespace Florist.Areas.Admin.Controllers
 
         public string ImgFromDb(Flower flower)
         {
-            var PlaceFromdb = _db.Flower.Find(flower.Id);
-            string img = PlaceFromdb.Image;
+            var FlowerFromdb = _db.Flower.Find(flower.Id);
+            string img = FlowerFromdb.Image;
             var local = _db.Set<Flower>()
             .Local
             .FirstOrDefault(entry => entry.Id.Equals(flower.Id));
@@ -169,6 +169,35 @@ namespace Florist.Areas.Admin.Controllers
             }
 
             return View(flower);
+        }
+
+        //GET - DELETE
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = await _db.Flower.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            var flower = await _db.Flower.FindAsync(id);
+
+            if (flower == null)
+            {
+                return View();
+            }
+            _db.Flower.Remove(flower);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
