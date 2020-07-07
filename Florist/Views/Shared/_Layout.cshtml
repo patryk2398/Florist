@@ -20,7 +20,7 @@
                 <div id="menu">
                     <div id="cssmenu">
                         <ul>
-                            <li><a href='index.html'><span>Strona główna</span></a></li>
+                            <li><a asp-area="Customer" asp-controller="Home" asp-action="Index"><span>Strona główna</span></a></li>
                             <li class='active has-sub'>
                                 <a href='oferta.html'><span>Kwiaty</span></a><span class="rozwin">+</span>
                                 <ul>
@@ -165,7 +165,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/144por3hcjyah2m4jzi3gsfywpvihxm2aecsoj9jlgeb0mgq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
