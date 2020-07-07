@@ -199,7 +199,7 @@ namespace Florist.Areas.Admin.Controllers
             return View(flower);
         }
 
-        //CREATE - POST
+        //EDIT - POST
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPOST()

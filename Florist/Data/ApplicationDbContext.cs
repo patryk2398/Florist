@@ -15,5 +15,6 @@ namespace Florist.Data
         }
 
         public DbSet<Flower> Flower { get; set; }
+        public DbSet<Coupon> Coupon { get; set; }
     }
 }
