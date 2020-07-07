@@ -60,7 +60,7 @@ namespace Florist.Models
         public bool SweetBouquets_Gift { get; set; }
         [Display(Name = "Kawy i herbaty")]
         public bool TeaAndCofee_Gift { get; set; }
-        [Display(Name = "Narodziny")]
+        [Display(Name = "Kosze")]
         public bool Basket_Gift { get; set; }
         [Display(Name = "Balony z helem")]
         public bool Balloon_Gift { get; set; }

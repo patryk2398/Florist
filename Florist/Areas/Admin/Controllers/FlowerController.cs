@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Florist.Areas.Admin.Controllers
 {
@@ -29,11 +30,113 @@ namespace Florist.Areas.Admin.Controllers
         [BindProperty]
         public Flower flower { get; set; }
 
+        #region Index
         public async Task<IActionResult> Index()
         {
             var Flower = await _db.Flower.ToListAsync();
             return View(Flower);
         }
+        public async Task<IActionResult> Index_Roses_Flowers()
+        {
+            var Flower = await _db.Flower.Where(t => t.Roses_Flowers == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Sunflowers_Flowers()
+        {
+            var Flower = await _db.Flower.Where(t => t.Sunflowers_Flowers == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Gerbers_Flowers()
+        {
+            var Flower = await _db.Flower.Where(t => t.Gerbers_Flowers == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Bouquets_Flowers()
+        {
+            var Flower = await _db.Flower.Where(t => t.Bouquets_Flowers == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Birthday_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Birthday_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_NameDay_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.NameDay_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Wedding_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Wedding_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Birth_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Birth_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Thanks_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Thanks_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Congratulations_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Congratulations_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Condolence_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Condolence_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Anniversary_Occasion()
+        {
+            var Flower = await _db.Flower.Where(t => t.Anniversary_Occasion == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Roses_Flowerbox()
+        {
+            var Flower = await _db.Flower.Where(t => t.Roses_Flowerbox == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Cloves_Flowerbox()
+        {
+            var Flower = await _db.Flower.Where(t => t.Cloves_Flowerbox == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Mix_Flowerbox()
+        {
+            var Flower = await _db.Flower.Where(t => t.Mix_Flowerbox == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_TeddyBear_Gift()
+        {
+            var Flower = await _db.Flower.Where(t => t.TeddyBear_Gift == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_SweetBouquets_Gift()
+        {
+            var Flower = await _db.Flower.Where(t => t.SweetBouquets_Gift == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_TeaAndCofee_Gift()
+        {
+            var Flower = await _db.Flower.Where(t => t.TeaAndCofee_Gift == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Basket_Gift()
+        {
+            var Flower = await _db.Flower.Where(t => t.Basket_Gift == true).ToListAsync();
+            return View(Flower);
+        }
+        public async Task<IActionResult> Index_Balloon_Gift()
+        {
+            var Flower = await _db.Flower.Where(t => t.Balloon_Gift == true).ToListAsync();
+            return View(Flower);
+        }
+        #endregion
 
         //GET - CREATE
         public IActionResult Create()

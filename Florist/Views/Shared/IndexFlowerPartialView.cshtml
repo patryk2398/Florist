@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Flower>
+
+<div>
+    <div class="row">
+        <div class="col-6">
+            <h2 class="h2">Róże</h2>
+        </div>
+        <div class="col-6 text-right addButton">
+            <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fas fa-plus"></i>&nbsp; Dodaj &nbsp;</a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <a asp-action="Details" asp-route-Id="@item.Id" class="recommend">
+                    <img src="@Html.DisplayFor(m => item.Image)" alt="photo">
+                    <div style="color: #006400;">@Html.DisplayFor(m => item.Name)</div>
+                    <div>@Html.DisplayFor(m => item.Price) PLN</div>
+                </a>
+            }
+        }
+        else
+        {
+            <p>Brak produktów do wyświetlenia...</p>
+        }
+    </div>
+</div>
