@@ -153,6 +153,23 @@ namespace Florist.Areas.Admin.Controllers
             _db.SaveChanges();
             return img;
         }
+
+        //GET - DETAILS
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var flower = await _db.Flower.FindAsync(id);
+            if (flower == null)
+            {
+                return NotFound();
+            }
+
+            return View(flower);
+        }
     }
 }
 
