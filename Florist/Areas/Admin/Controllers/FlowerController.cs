@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Florist.Data;
 using Florist.Models;
 using Florist.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,6 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Florist.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SD.ManagerUser)]
     [Area("Admin")]
     public class FlowerController : Controller
     {

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Florist.Utility
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -62,14 +63,16 @@
                                 </ul>
                             </li>
                             <li><a href='kontakt.html'><span>Kontakt</span></a></li>
-                            <li class='active has-sub'>
-                                <a href='portfolio.html'><span>Admin</span></a><span class="rozwin">+</span>
-                                <ul>
-                                    <li><a asp-area="Admin" asp-controller="Coupon" asp-action="Index"><span>Kupony</span></a></li>
-                                    <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><span>Użytkownicy</span></a></li>
-                                </ul>
-                            </li>
-                            
+                            @if (User.IsInRole(SD.ManagerUser))
+                            {
+                                <li class='active has-sub'>
+                                    <a href='portfolio.html'><span>Admin</span></a><span class="rozwin">+</span>
+                                    <ul>
+                                        <li><a asp-area="Admin" asp-controller="Coupon" asp-action="Index"><span>Kupony</span></a></li>
+                                        <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><span>Użytkownicy</span></a></li>
+                                    </ul>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Flower>
+@using Florist.Utility
 @{
     ViewData["Title"] = "Index";
 
@@ -8,9 +9,12 @@
         <div class="col-6">
             <h2 class="h2">Kawy i herbaty</h2>
         </div>
-        <div class="col-6 text-right addButton">
-            <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fas fa-plus"></i>&nbsp; Dodaj &nbsp;</a>
-        </div>
+        @if (User.IsInRole(SD.ManagerUser))
+        {
+            <div class="col-6 text-right addButton">
+                <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fas fa-plus"></i>&nbsp; Dodaj &nbsp;</a>
+            </div>
+        }
     </div>
     <br />
     <partial name="IndexFlowerPartialView" />
