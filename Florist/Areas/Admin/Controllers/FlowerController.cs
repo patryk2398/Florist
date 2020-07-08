@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Florist.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SD.ManagerUser)]
     [Area("Admin")]
     public class FlowerController : Controller
     {

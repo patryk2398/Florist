@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Florist.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SD.ManagerUser)]
     [Area("Admin")]
     public class CouponController : Controller
     {
