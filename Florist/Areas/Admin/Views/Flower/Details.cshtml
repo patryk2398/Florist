@@ -1,21 +1,81 @@
-﻿@model Florist.Models.Flower
+﻿@model Florist.Models.ShoppingCart
+
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br/>
-<div class="text-right">
-    <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model.Id">
-        <i class="fas fa-edit"></i>
-    </a>
-    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model.Id">
-        <i class="fas fa-trash-alt"></i>
-    </a>
-</div>
-<div class="row" style="font-family:'Lucida Sans Unicode';">
-    <img src="@Model.Image" width="100%" class="col-6"/>
-    <div class="col-6">
-        <h2 style="color: mediumseagreen;" class="col-12">@Model.Name</h2>
-        <label class="col-12">@Model.Description</label>
-        <h2 class="col-12">@Model.Price,00zł</h2>
+
+<br />
+<h2 class="text-info">Item Details</h2>
+<br />
+
+<form method="post">
+    <div class="border backgroundWhite row">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12 pb-4 d-md-none">
+            <img src="@Model.Flower.Image" width="100%" style="border-radius:5px;border: 1px solid #bbb9b9;" />
+        </div>
+        <div class="col-md-8">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label asp-for="Flower.Name" class="text-info font-weight-bold"></label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="Flower.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label asp-for="Flower.Description" class="text-info font-weight-bold"></label>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-8">
+                        <input asp-for="Flower.Description" readonly class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label asp-for="Flower.Price" class="text-info font-weight-bold"></label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="Flower.Price" readonly class="form-control" />
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label asp-for="Count" class="text-info font-weight-bold"></label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="Count" class="form-control" />
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 offset-1 d-none d-md-block">
+            <img src="@Model.Flower.Image" width="100%" style="border-radius:5px;border: 1px solid #bbb9b9;" />
+        </div>
+
+
+
     </div>
-</div>
+    <input asp-for="FlowerId" hidden />
+</form>
+
+@section Scripts{
+
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

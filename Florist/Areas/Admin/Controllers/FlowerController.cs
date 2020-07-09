@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Florist.Data;
 using Florist.Models;
 using Florist.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -259,20 +261,67 @@ namespace Florist.Areas.Admin.Controllers
         }
 
         //GET - DETAILS
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var flower = await _db.Flower.FindAsync(id);
-            if (flower == null)
-            {
-                return NotFound();
-            }
+            var flowerFromDb = await _db.Flower.FindAsync(id);
 
-            return View(flower);
+            ShoppingCart cartObj = new ShoppingCart()
+            {
+                Flower = flowerFromDb,
+                FlowerId = flowerFromDb.Id
+            };
+
+            return View(cartObj);
+        }
+
+
+        //POST - DETAILS
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Details(ShoppingCart cartObj)
+        {
+            cartObj.Id = 0;
+            if(ModelState.IsValid)
+            {
+                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                cartObj.ApplicationUserId = claim.Value;
+
+                ShoppingCart cartFromDb = await _db.ShoppingCart.Where(c => c.ApplicationUserId == cartObj.ApplicationUserId
+                                          && c.FlowerId == cartObj.FlowerId).FirstOrDefaultAsync();
+                
+                if(cartFromDb == null)
+                {
+                    await _db.ShoppingCart.AddAsync(cartObj);
+                }
+                else
+                {
+                    cartFromDb.Count = cartFromDb.Count + cartObj.Count;
+                }
+                await _db.SaveChangesAsync();
+
+                var count = _db.ShoppingCart.Where(c => c.ApplicationUserId == cartObj.ApplicationUserId).ToList().Count;
+                HttpContext.Session.SetInt32(SD.ssShoppingCartCount, count);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var flowerFromDb = await _db.Flower.FindAsync(cartObj.FlowerId);
+
+                ShoppingCart cartObject = new ShoppingCart()
+                {
+                    Flower = flowerFromDb,
+                    FlowerId = flowerFromDb.Id
+                };
+                return View(cartObject);
+            }
         }
 
         //GET - DELETE

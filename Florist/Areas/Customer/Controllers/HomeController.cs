@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Florist.Models;
+using System.Security.Claims;
+using Florist.Data;
+using Microsoft.AspNetCore.Http;
+using Florist.Utility;
 
 namespace Florist.Controllers
 {
@@ -13,14 +17,25 @@ namespace Florist.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if(claim!=null)
+            {
+                var cnt = _db.ShoppingCart.Where(u => u.ApplicationUserId == claim.Value).ToList().Count;
+                HttpContext.Session.SetInt32(SD.ssShoppingCartCount, cnt);
+            }
+
             return View();
         }
 

@@ -10,5 +10,6 @@ namespace Florist.Utility
         public const string DefaultFlowerImage = "default.png";
         public const string ManagerUser = "Manager";
         public const string CustomerEndUser = "Customer";
+        public const string ssShoppingCartCount = "ssCartCount";
     }
 }

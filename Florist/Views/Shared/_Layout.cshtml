@@ -1,4 +1,6 @@
 ﻿@using Florist.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,9 +149,24 @@
             <!-- Collapsible content -->
         </nav>
         <!--/.Navbar-->
-        <a id="shopping_cart" href="shop">
-            <i style="font-size:36px; margin: 34px 30px 0px 30px; float: right;" class="fas fa-shopping-cart"></i>
-        </a>
+        @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssShoppingCartCount) != null)
+        {
+            <a id="shopping_cart" href="shop">
+                @{
+                    var count = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssShoppingCartCount);
+                }
+                <i style="font-size:36px; margin: 34px 30px 0px 30px; float: right;" class="fas fa-shopping-cart"></i>
+                &nsbn; (@count)
+            </a>
+        }
+        else
+        {
+            <a id="shopping_cart" href="shop">
+                <i style="font-size:36px; margin: 34px 30px 0px 30px; float: right;" class="fas fa-shopping-cart"></i>
+                &nsbn; (0)
+            </a>
+
+        }
         <div id="user_icon" style="padding-top:25px; float:right; font-size:36px;">
             <partial name="_LoginPartial" />
         </div>
