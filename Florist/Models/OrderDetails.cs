@@ -24,11 +24,15 @@ namespace Florist.Models
         [ForeignKey("FlowerId")]
         public virtual Flower Flower { get; set; }
 
+        [Display(Name = "Ilość")]
         public int Count { get; set; }
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
+        [Display(Name = "Opis")]
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Cena")]
         public double Price { get; set; }
     }
 }

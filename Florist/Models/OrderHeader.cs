@@ -19,6 +19,7 @@ namespace Florist.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Required]
+        [Display(Name = "Data odbioru")]
         public DateTime OrderDate { get; set; }
 
         [Required]
@@ -35,6 +36,7 @@ namespace Florist.Models
 
         [Required]
         [NotMapped]
+        [Display(Name = "Data odbioru")]
         public DateTime PickupDate { get; set; }
 
         [Display(Name = "Kupon")]
