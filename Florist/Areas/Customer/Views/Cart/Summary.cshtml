@@ -1,7 +1,7 @@
 ﻿@model Florist.Models.ViewModel.OrderDetailsCard
 @using Microsoft.Extensions.Options
 
-
+@inject IOptions<Florist.Utility.StripeSettings> Stripe
 @{
     ViewData["Title"] = "Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -117,9 +117,9 @@
                                     var OrderTotalForStrip = Model.OrderHeader.OrderTotal * 100;
                                 }
                                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                        @*data-key="@Stripe.Value.PublishableKey"*@
+                                        data-key="@Stripe.Value.PublishableKey"
                                         data-amount="@OrderTotalForStrip"
-                                        data-name="Spice Restaurant"
+                                        data-name="Florist"
                                         data-label="Place Order"
                                         data-description="Good Food, Good Mood."
                                         data-locale="auto"

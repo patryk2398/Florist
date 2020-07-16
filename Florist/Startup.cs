@@ -12,6 +12,8 @@ using Florist.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Florist.Utility;
+using Stripe;
 
 namespace Florist
 {
@@ -34,10 +36,11 @@ namespace Florist
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.ConfigureApplicationCookie(options =>
-
             {
 
                 options.LoginPath = $"/Identity/Account/Login";
@@ -75,7 +78,7 @@ namespace Florist
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
-
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             app.UseAuthentication();
             app.UseAuthorization();
 

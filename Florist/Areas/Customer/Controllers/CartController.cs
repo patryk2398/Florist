@@ -8,9 +8,11 @@ using Florist.Data;
 using Florist.Models;
 using Florist.Models.ViewModel;
 using Florist.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 namespace Florist.Areas.Customer.Controllers
 {
@@ -155,7 +157,7 @@ namespace Florist.Areas.Customer.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Summary")]
-        public async Task<IActionResult> SummaryPOST()
+        public async Task<IActionResult> SummaryPOST(string stripeToken)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -208,8 +210,38 @@ namespace Florist.Areas.Customer.Controllers
             HttpContext.Session.SetInt32(SD.ssShoppingCartCount, 0);
             await _db.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home");
+            var options = new ChargeCreateOptions
+            {
+                Amount = Convert.ToInt32(detailsCard.OrderHeader.OrderTotal * 100),
+                Currency = "pln",
+                Description = "Order ID : " + detailsCard.OrderHeader.Id,
+                Source = stripeToken
+            };
+            var service = new ChargeService();
+            Charge charge = service.Create(options);
+
+            if(charge.BalanceTransactionId == null)
+            {
+                detailsCard.OrderHeader.PaymentStatus = SD.PaymentStatusRejected;
+            }
+            else
+            {
+                detailsCard.OrderHeader.TransactionId = charge.BalanceTransactionId;
+            }
+
+            if(charge.Status.ToLower()=="succeeded")
+            {
+                detailsCard.OrderHeader.PaymentStatus = SD.PaymentStatusApproved;
+                detailsCard.OrderHeader.Status = SD.StatusSubmitted;
+            }
+            else
+            {
+                detailsCard.OrderHeader.PaymentStatus = SD.PaymentStatusRejected;
+            }
+
+            await _db.SaveChangesAsync();
             return RedirectToAction("Confirm", "Order", new { id = detailsCard.OrderHeader.Id });
         }
+
     }
 }
