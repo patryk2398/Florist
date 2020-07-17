@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Florist.Utility;
 using Stripe;
 using Microsoft.AspNetCore.Authentication.Facebook;
+using Florist.Service;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Florist
 {
@@ -39,6 +41,8 @@ namespace Florist
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration);
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.ConfigureApplicationCookie(options =>
