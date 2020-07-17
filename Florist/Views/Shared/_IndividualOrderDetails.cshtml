@@ -33,7 +33,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-3">
-                    <label>Suma zamówienia</label>
+                    <label>Suma zamówienia (PLN)</label>
                 </div>
                 <div class="col-9">
                     <input asp-for="OrderHeader.OrderTotal" disabled class="form-control" />
@@ -69,7 +69,7 @@
                             <h6 class="my-0">@details.Name</h6>
                             <small class="text-muted">Ilość: @details.Count</small>
                         </div>
-                        <span class="text-muted">@(details.Price * details.Count)</span>
+                        <span class="text-muted">@(details.Price * details.Count),00 zł</span>
                     </li>
                 }
                 @if(Model.OrderHeader.CouponCode!=null)
@@ -79,12 +79,12 @@
                             <h6 class="my-0">Kod zniżkowy</h6>
                             <small class="text-muted">@Model.OrderHeader.CouponCode</small>
                         </div>
-                        <span class="text-success">@(Model.OrderHeader.OrderTotalOriginal-Model.OrderHeader.OrderTotal)</span>
+                        <span class="text-success">-@(Model.OrderHeader.OrderTotalOriginal-Model.OrderHeader.OrderTotal),00 zł</span>
                     </li>
                 }
                 <li class="list-group-item d-flex justify-content-between bg-light">
                     <span class="text-info">Razem (PLN)</span>
-                    <strong class="text-info">$@Model.OrderHeader.OrderTotal</strong>
+                    <strong class="text-info">@Model.OrderHeader.OrderTotal,00 zł</strong>
                 </li>
             </ul>
             <button type="submit" disabled class="btn btn-info form-control">@Model.OrderHeader.Status</button>

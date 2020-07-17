@@ -204,7 +204,7 @@ namespace Florist.Areas.Customer.Controllers
             {
                 detailsCard.OrderHeader.OrderTotal = detailsCard.OrderHeader.OrderTotalOriginal;
             }
-            detailsCard.OrderHeader.CouponCodeDiscount = detailsCard.OrderHeader.OrderTotalOriginal = detailsCard.OrderHeader.OrderTotal;
+            detailsCard.OrderHeader.CouponCodeDiscount = detailsCard.OrderHeader.OrderTotalOriginal - detailsCard.OrderHeader.OrderTotal;
             await _db.SaveChangesAsync();
             _db.ShoppingCart.RemoveRange(detailsCard.listCart);
             HttpContext.Session.SetInt32(SD.ssShoppingCartCount, 0);

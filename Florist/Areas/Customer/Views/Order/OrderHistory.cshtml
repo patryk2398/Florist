@@ -8,13 +8,10 @@
 <div>
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info">Lista kuponów</h2>
-        </div>
-        <div class="col-6 text-right">
-            <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fas fa-plus"></i>&nbsp; Dodaj &nbsp;</a>
+            <h1 style="color: mediumseagreen;">Historia zamówień</h1>
         </div>
     </div>
-    <br />
+    <hr />
     <div>
         @if (Model.Orders.Count() > 0)
         {

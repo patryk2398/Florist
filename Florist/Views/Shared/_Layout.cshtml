@@ -77,8 +77,11 @@
                                     <li><a asp-action="Index_Balloon_Gift" asp-controller="Flower" asp-area="Admin"><span>Balony z helem</span></a></li>
                                 </ul>
                             </li>
-                            <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory"><span>Historia zamówień</span></a></li>
                             <li><a href='kontakt.html'><span>Kontakt</span></a></li>
+                            @if (User.IsInRole(SD.CustomerEndUser) || User.IsInRole(SD.ManagerUser))
+                            {
+                                <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory"><span>Historia zamówień</span></a></li>
+                            }
                             @if (User.IsInRole(SD.ManagerUser))
                             {
                                 <li class='active has-sub'>

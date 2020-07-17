@@ -111,7 +111,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-12 col-md-4 offset-md-8">
+                            <div class="col-12 ">
 
                                 @{
                                     var OrderTotalForStrip = Model.OrderHeader.OrderTotal * 100;
@@ -121,7 +121,7 @@
                                         data-amount="@OrderTotalForStrip"
                                         data-name="Florist"
                                         data-label="Place Order"
-                                        data-description="Good Food, Good Mood."
+                                        data-description="Kwiaty to życie."
                                         data-locale="auto"
                                         data-allow-remember-me="false"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
@@ -129,7 +129,14 @@
                                 <script>
                                     document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
                                 </script>
-                                <button type="submit" id="btnPlaceOrder" onclick="return validateInput()" value="Place Order" class="btn btn-success form-control">Zapłać</button>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="btn btn-primary form-control">Powrót</a>
+                                    </div>
+                                    <div class="col-3 offset-6">
+                                        <button type="submit" id="btnPlaceOrder" onclick="return validateInput()" value="Place Order" class="btn btn-success form-control">Zapłać</button>
+                                    </div>
+                                </div>           
                             </div>
                         </div>
                     </div>
@@ -153,7 +160,7 @@
             if (getTimeFromCurrentDate() >= "20.00") {
                 minDt = 1;
             }
-            $("#datepicker").datepicker({ minDate: minDt, maxDate: "+1W" });
+            $("#datepicker").datepicker({ minDate: minDt, maxDate: "+1W", dateFormat: 'yy-mm-dd' });
             $("#timepicker").timepicker({ 'minTime': '11:00 AM', 'maxTime': '9:00 PM', step: '30' })
         });
         function setPickUpTime() {
