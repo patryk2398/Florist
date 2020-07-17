@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Florist.Utility;
 using Stripe;
+using Microsoft.AspNetCore.Authentication.Facebook;
 
 namespace Florist
 {
@@ -50,7 +51,11 @@ namespace Florist
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
             });
-
+            services.AddAuthentication().AddFacebook(FacebookOptions =>
+            {
+                FacebookOptions.AppId = "4144621185609363";
+                FacebookOptions.AppSecret = "cd4285eeb326054d802f445cf6d13013";
+            });
             services.AddSession(options =>
             {
                 options.Cookie.IsEssential = true;
