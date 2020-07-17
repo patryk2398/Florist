@@ -24,6 +24,11 @@ namespace Florist.Utility
         public const string PaymentStatusApproved = "Approved";
         public const string PaymentStatusRejected = "Rejected";
 
+        public const string Completed = "Completed.png";
+        public const string InKitchen = "InKitchen.png";
+        public const string OrderPlaced = "OrderPlaced.png";
+        public const string ReadyForPickup = "ReadyForPickup.png";
+
         public static double DiscountedPrice(Coupon couponFromDb, double OriginallOrderTotal)
         {
             if (couponFromDb == null)

@@ -1,0 +1,22 @@
+﻿@model Florist.Models.OrderHeader
+@using Florist.Utility
+    <form method="post">
+        <div class="container row border ml-1" style="width:100%">
+            @if (Model.Status == SD.StatusSubmitted)
+            {
+                <img src="~/img/OrderPlaced.png" width="100%" />
+            }
+            @if (Model.Status == SD.StatusInProcess)
+            {
+                <img src="~/img/InKitchen.png" width="100%" />
+            }
+            @if (Model.Status == SD.StatusReady)
+            {
+                <img src="~/img/ReadyForPickup.png" width="100%" />
+            }
+            @if (Model.Status == SD.StatusCompleted)
+            {
+                <img src="~/img/Completed.png" width="100%" />
+            }
+        </div>
+    </form>
