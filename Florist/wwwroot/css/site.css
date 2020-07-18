@@ -1,10 +1,9 @@
-﻿header a
-{
+﻿header a {
     color: black;
     text-decoration: none;
 }
-.product
-{
+
+.product {
     float: left;
 }
 
@@ -15,30 +14,115 @@
     font-size: 26px;
     font-weight: 700;
     float: left;
-    width: 30.25%; 
-    min-width:300px;
+    width: 30.25%;
+    min-width: 280px;
     margin: 3% 1.5%;
 }
 
-.recommend:hover
-{
-    opacity: 0.6;
-    text-decoration:none;
+    .recommend:hover {
+        opacity: 0.6;
+        text-decoration: none;
+    }
+
+    .recommend img {
+        width: 100%;
+    }
+
+#content {
+    margin-top: 40px;
 }
 
-.recommend img 
-{
-    width: 100%;
+.h2 {
+    margin-left: 3%;
 }
 
-#content
-{
-    margin-top:40px;
-}
-.h2
-{
-    margin-left:3%;
-}
 .addButton {
     padding-right: 3%;
+}
+
+.button {
+    background-color: mediumseagreen;
+    width: auto;
+    padding: 10px 27px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+    .button:hover {
+        opacity: 0.8;
+    }
+
+footer {
+    height: auto;
+    background-color: #cccccc;
+    color: black;
+    padding: 30px 0;
+}
+
+    footer a {
+        display: block;
+        color: black;
+        text-decoration: none;
+    }
+
+    footer img {
+        width: 150px;
+    }
+
+    footer a:hover {
+        color: #666666;
+        text-decoration: none;
+    }
+
+    footer i {
+        padding-top: 5px;
+    }
+
+@media (max-width: 1200px) {
+    .recommend {
+        text-decoration: none;
+        cursor: pointer;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+        float: left;
+        width: 48%;
+        min-width: 300px;
+        margin: 3% 1%;
+    }
+
+        .recommend:hover {
+            opacity: 0.6;
+            text-decoration: none;
+        }
+
+        .recommend img {
+            width: 100%;
+        }
+    
+}
+
+@media (max-width: 800px) {
+    .recommend {
+        text-decoration: none;
+        cursor: pointer;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+        float: left;
+        width: 96%;
+        min-width: 300px;
+        margin: 3% 2%;
+    }
+
+        .recommend:hover {
+            opacity: 0.6;
+            text-decoration: none;
+        }
+
+        .recommend img {
+            width: 100%;
+        }
+    
 }

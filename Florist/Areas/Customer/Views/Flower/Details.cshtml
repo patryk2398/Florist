@@ -1,0 +1,58 @@
+﻿@model Florist.Models.ShoppingCart
+@using Florist.Utility
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (User.IsInRole(SD.ManagerUser))
+        {
+            <div class="row offset-11">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model.FlowerId">
+                    <i class="fas fa-edit"></i>
+                </a>&nbsp;
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model.FlowerId">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+        }
+        <div class="row" style="font-family:'Lucida Sans Unicode';">
+            <img src="@Model.Flower.Image" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" />
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <h2 style="color: mediumseagreen; font-weight:600;" class="col-12">@Model.Flower.Name</h2>
+                <label class="col-12 text-justify">@Model.Flower.Description</label>
+                <div class="form-group row mt-2">
+                    <h2 class="col-4">@Model.Flower.Price,00 zł</h2>
+                    <span class="col-1 offset-4 p-2">Ilość: </span>
+                    <input asp-for="Count" class="form-control col-2" />
+                    <span class="p-2">szt.</span>
+                </div>
+                &nbsp;&nbsp;&nbsp;<span asp-validation-for="Count" class="text-danger"></span>
+                <div class="col-6">
+                    <button type="submit" value="Add to Cart" class="button"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <input asp-for="Flower.Name" type="hidden" class="form-control" style="background-color: white; border: none; font-size: 30px; color: mediumseagreen; font-weight:600;" />
+        </div>
+        <div class="col-md-8">
+            <input asp-for="Flower.Description" type="hidden" class="form-control" />
+        </div>
+        <div class="col-md-8">
+            <input asp-for="Flower.Price" readonly type="hidden" class="form-control" />
+        </div>
+
+    </div>
+    <input asp-for="FlowerId" hidden />
+</form>
+
+@section Scripts{
+
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

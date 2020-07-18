@@ -18,7 +18,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Florist.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Customer")]
     public class FlowerController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -261,7 +261,7 @@ namespace Florist.Areas.Admin.Controllers
         }
 
         //GET - DETAILS
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

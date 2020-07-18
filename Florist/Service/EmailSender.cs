@@ -36,7 +36,7 @@ namespace Florist.Service
             msg.AddTo(new EmailAddress(email));
             try
             {
-                return client.SendEmailAsync(msg)
+                return client.SendEmailAsync(msg);
             }
             catch(Exception ex)
             {

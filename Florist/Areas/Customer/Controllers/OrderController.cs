@@ -10,6 +10,7 @@ using Florist.Models;
 using Florist.Models.ViewModel;
 using Florist.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -21,11 +22,13 @@ namespace Florist.Areas.Customer.Controllers
     public class OrderController : Controller
     {  
         private ApplicationDbContext _db;
+        private readonly IEmailSender _emailSender;
         private int PageSize = 2;
 
-        public OrderController(ApplicationDbContext db)
+        public OrderController(ApplicationDbContext db, IEmailSender emailSender)
         {
             _db = db;
+            _emailSender = emailSender;
         }
 
         [Authorize]
@@ -140,6 +143,9 @@ namespace Florist.Areas.Customer.Controllers
             OrderHeader orderHeader = await _db.OrderHeader.FindAsync(OrderId);
             orderHeader.Status = SD.StatusReady;
             await _db.SaveChangesAsync();
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
+                   Email, "Florist - Order Ready For Pickup" + orderHeader.Id.ToString(),
+                   "Order is ready for pickup.");
             return RedirectToAction("ManageOrder", "Order");
         }
 
@@ -149,6 +155,9 @@ namespace Florist.Areas.Customer.Controllers
             OrderHeader orderHeader = await _db.OrderHeader.FindAsync(OrderId);
             orderHeader.Status = SD.StatusCancelled;
             await _db.SaveChangesAsync();
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
+                    Email, "Florist - Order Cancelled" + orderHeader.Id.ToString(),
+                    "Order has been cancelled successfully.");
             return RedirectToAction("ManageOrder", "Order");
         }
 
@@ -240,6 +249,9 @@ namespace Florist.Areas.Customer.Controllers
             OrderHeader orderHeader = await _db.OrderHeader.FindAsync(orderId);
             orderHeader.Status = SD.StatusCompleted;
             await _db.SaveChangesAsync();
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
+                   Email, "Florist - Order Completed" + orderHeader.Id.ToString(),
+                   "Order has beend completed successfully.");
             return RedirectToAction("OrderPickup", "Order");
         }
     }
