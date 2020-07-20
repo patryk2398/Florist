@@ -219,7 +219,7 @@
                     <img src="~/img/visa.png" />
                 </div>
             </div>  
-            <div class="col-lg-5 offset-lg-2 text-center col-md-10 offset-md-1 pt-md-5 pt-lg-0">
+            <div class="col-lg-5 offset-lg-2 text-center col-md-10 offset-md-1 pt-md-5 pt-lg-0 pt-sm-5 pt-5">
                 <h4>Kontakt</h4>
                 <hr />
                 <div class="row col-12 pb-1">
@@ -269,6 +269,23 @@
         <script src="~/js/menu.js"></script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 3; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

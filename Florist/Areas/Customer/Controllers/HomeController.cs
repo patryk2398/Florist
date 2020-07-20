@@ -10,6 +10,7 @@ using System.Security.Claims;
 using Florist.Data;
 using Microsoft.AspNetCore.Http;
 using Florist.Utility;
+using Microsoft.EntityFrameworkCore;
 
 namespace Florist.Controllers
 {
@@ -25,8 +26,10 @@ namespace Florist.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var Flower = await _db.Flower.ToListAsync();
+
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -36,7 +39,7 @@ namespace Florist.Controllers
                 HttpContext.Session.SetInt32(SD.ssShoppingCartCount, cnt);
             }
 
-            return View();
+            return View(Flower);
         }
 
         public IActionResult Privacy()
