@@ -5,18 +5,20 @@
 }
 
 <div>
-    <h1 class="h2 text-center" style="color:mediumseagreen;">Nasze bestsellery</h1>
+    <h1 class="text-center" style="color:mediumseagreen;">Nasze bestsellery</h1>
     <br />
     <div>
         @if (Model.Count() > 0)
         {
             <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next">
+                @*<div class="controls-top">
+                    <a class="btn-floating carousel-arrow" href="#multi-item-example" data-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a class="btn-floating carousel-arrow col-1" href="#multi-item-example" data-slide="next">
                         <i class="fas fa-chevron-right"></i>
                     </a>
-                </div>
+                </div>*@
                 <ol class="carousel-indicators">
                     @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
                     {
@@ -35,40 +37,42 @@
                     {
                         if (i == 0)
                         {
-                    <div class="carousel-item active">
-                        @if (Model.Count() < 4)
-                        {
-                            for (int j = 0; j < Model.Count(); j++)
-                            {
-                                var item = Model.ElementAt(i * 4 + j);
-                                <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-md-3 " style="float:left">
-                                    <img class="card-img-top"
-                                         src="@Html.DisplayFor(m => item.Image)"
-                                         alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0">@Html.DisplayFor(m => item.Name)</h5>
-                                        <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
-                                    </div>
-                                </a>
-                            }
-                        }
-                        else
-                        {
-                            for (int j = 0; j < 4; j++)
-                            {
-                                var item = Model.ElementAt(i * 4 + j);
-                                <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-md-3 " style="float:left">
-                                    <img class="card-img-top"
-                                         src="@Html.DisplayFor(m => item.Image)"
-                                         alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0">@Html.DisplayFor(m => item.Name)</h5>
-                                        <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
-                                    </div>
-                                </a>
-                            }
-                        }
-                    </div>
+                            <div class="carousel-item active">
+
+                                @if (Model.Count() < 5)
+                                {
+                                    for (int j = 0; j < Model.Count(); j++)
+                                    {
+                                        var item = Model.ElementAt(i * 4 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+                                else
+                                {
+                                    for (int j = 0; j < 4; j++)
+                                    {
+                                        var item = Model.ElementAt(i * 4 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+
+                            </div>
                         }
                         else
                         {
@@ -76,7 +80,7 @@
                                 @for (int j = 0; j < Convert.ToDouble(Model.Count() - i * 4); j++)
                                 {
                                     var item = Model.ElementAt(i * 4 + j);
-                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-md-3 " style="float:left">
+                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
                                         <img class="card-img-top"
                                              src="@Html.DisplayFor(m => item.Image)"
                                              alt="Card image cap">
@@ -97,6 +101,81 @@
         {
             <p>Brak produktów do wyświetlenia...</p>
         }
+        <br />
+        <div style="width:100%; height: auto; padding: 30px 0; background-color:mediumseagreen; text-align:center;" class="mt-4 shadow">
+            <h1>O nas</h1>
+        </div>
+        <div class="col-12 mt-5 row">
+            <img src="~/img/onas2.jpg" class="col-6 p-0" style="border: solid; border-color:#dddddd; border-width:10px;" />
+            <div class="col-4 text-center offset-1 pt-5">
+                <h4>Lorem ipsum</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+        <div class="col-12 row">
+            <div class="col-4 text-center offset-1 pt-5">
+                <h4>Lorem ipsum</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <img src="~/img/onas1.jpg" class="col-6 p-0 offset-1" style="border: solid; border-color:#dddddd; border-width:10px;" />
+        </div>
+        <div class="col-12 row">
+            <img src="~/img/onas3.jpg" class="col-6 p-0" style="border: solid; border-color:#dddddd; border-width:10px;" />
+            <div class="col-4 text-center offset-1 pt-5">
+                <h4>Lorem ipsum</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+        <div style="width:100%; height: auto; padding: 30px; background-color:mediumseagreen; text-align:center;" class="mt-5 shadow">
+            <h1>Dlaczego warto nas wybrać?</h1>
+        </div>
+        <div class="mt-5 mb-4 row">
+            <div class="col-4 text-center">
+                <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;"/>
+                <h4 class="mt-2">Lorem ipsum</h4>
+                <p class="col-10 offset-1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+            <div class="col-4 text-center">
+                <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;" />
+                <h4 class="mt-2">Lorem ipsum</h4>
+                <p class="col-10 offset-1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+            <div class="col-4 text-center">
+                <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;" />
+                <h4 class="mt-2">Lorem ipsum</h4>
+                <p class="col-10 offset-1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 
