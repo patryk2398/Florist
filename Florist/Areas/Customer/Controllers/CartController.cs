@@ -30,6 +30,7 @@ namespace Florist.Areas.Customer.Controllers
             _db = db;
             _emailSender = emailSender;
         }
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             detailsCard = new OrderDetailsCard()

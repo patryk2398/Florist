@@ -124,6 +124,20 @@ footer {
     display: table;
 }
 
+.green_rect {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    background-color: mediumseagreen;
+    text-align: center;
+}
+
+.about_us_img {
+    border: solid;
+    border-color: #dddddd;
+    border-width: 10px;
+}
+
 @media (max-width: 1200px) {
     .recommend {
         text-decoration: none;

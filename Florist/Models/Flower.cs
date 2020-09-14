@@ -66,7 +66,7 @@ namespace Florist.Models
         public bool Balloon_Gift { get; set; }
 
         [Display(Name = "Cena")]
-        [Range(1,int.MaxValue, ErrorMessage ="Cena powinna być większa niż 1zł")]
+        [Range(1,int.MaxValue, ErrorMessage ="Cena powinna być większa niż 1 zł")]
         public double Price { get; set; }
     }
 }

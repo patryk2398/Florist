@@ -11,14 +11,6 @@
         @if (Model.Count() > 0)
         {
             <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                @*<div class="controls-top">
-                    <a class="btn-floating carousel-arrow" href="#multi-item-example" data-slide="prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a class="btn-floating carousel-arrow col-1" href="#multi-item-example" data-slide="next">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>*@
                 <ol class="carousel-indicators">
                     @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
                     {
@@ -102,14 +94,14 @@
             <p>Brak produktów do wyświetlenia...</p>
         }
         <br />
-        <div style="width:100%; height: auto; padding: 30px 0; background-color:mediumseagreen; text-align:center;" class="mt-4 shadow">
+        <div class="mt-4 shadow green_rect">
             <h1>O nas</h1>
         </div>
         <div class="col-12 mt-5 row">
-            <img src="~/img/onas2.jpg" class="col-6 p-0" style="border: solid; border-color:#dddddd; border-width:10px;" />
-            <div class="col-4 text-center offset-1 pt-5">
+            <img src="~/img/onas2.jpg" class="col-lg-6 p-0 col-12 about_us_img"/>
+            <div class="col-lg-6 pt-4 pb-lg-0 text-center pt-3 pb-5 col-12">
                 <h4>Lorem ipsum</h4>
-                <p>
+                <p class="text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -120,9 +112,10 @@
             </div>
         </div>
         <div class="col-12 row">
-            <div class="col-4 text-center offset-1 pt-5">
+            <img src="~/img/onas1.jpg" class="d-lg-none p-0 col-12 about_us_img" />
+            <div class="col-lg-6 pb-lg-0 text-center pt-4 pb-5 col-12">
                 <h4>Lorem ipsum</h4>
-                <p>
+                <p class="text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -131,13 +124,13 @@
                     sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
-            <img src="~/img/onas1.jpg" class="col-6 p-0 offset-1" style="border: solid; border-color:#dddddd; border-width:10px;" />
+            <img src="~/img/onas1.jpg" class="col-lg-6 d-lg-block p-0 d-none about_us_img"/>
         </div>
         <div class="col-12 row">
-            <img src="~/img/onas3.jpg" class="col-6 p-0" style="border: solid; border-color:#dddddd; border-width:10px;" />
-            <div class="col-4 text-center offset-1 pt-5">
+            <img src="~/img/onas3.jpg" class="col-lg-6 p-0 col-12 about_us_img"/>
+            <div class="col-lg-6 pb-lg-0 text-center pt-4 col-12">
                 <h4>Lorem ipsum</h4>
-                <p>
+                <p class="text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -147,32 +140,32 @@
                 </p>
             </div>
         </div>
-        <div style="width:100%; height: auto; padding: 30px; background-color:mediumseagreen; text-align:center;" class="mt-5 shadow">
+        <div class="mt-5 shadow green_rect">
             <h1>Dlaczego warto nas wybrać?</h1>
         </div>
-        <div class="mt-5 mb-4 row">
-            <div class="col-4 text-center">
+        <div class="mb-4 row">
+            <div class="mt-5 col-md-4 col-12 text-center">
                 <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;"/>
                 <h4 class="mt-2">Lorem ipsum</h4>
                 <p class="col-10 offset-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    sed do eiusmod tempor incididunt ut labore.
                 </p>
             </div>
-            <div class="col-4 text-center">
-                <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;" />
+            <div class="mt-5 col-md-4 col-12 text-center">
+                <img src="~/img/dlaczego2.jpg" style="width:60%; border-radius:250px;" />
                 <h4 class="mt-2">Lorem ipsum</h4>
                 <p class="col-10 offset-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    sed do eiusmod tempor incididunt ut labore.
                 </p>
             </div>
-            <div class="col-4 text-center">
-                <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;" />
+            <div class="mt-5 col-md-4 col-12 text-center">
+                <img src="~/img/dlaczego3.png" style="width:60%; border-radius:250px;" />
                 <h4 class="mt-2">Lorem ipsum</h4>
                 <p class="col-10 offset-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    sed do eiusmod tempor incididunt ut labore.
                 </p>
             </div>
         </div>

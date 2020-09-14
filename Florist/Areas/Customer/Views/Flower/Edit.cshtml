@@ -28,7 +28,7 @@
                             <label asp-for="Description" class="control-label"></label>
                         </div>
                         <div class="col-5">
-                            @Html.TextAreaFor(m => m.Description)
+                            <textarea asp-for="Description" class="form-control" rows="14"></textarea>
                         </div>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
@@ -186,13 +186,3 @@
         </form>
     </div>
 </div>
-@section Scripts
-{
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: "lists",
-            menubar: 'file edit format'
-        });
-    </script>
-}

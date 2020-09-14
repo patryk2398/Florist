@@ -109,12 +109,14 @@
                 <li><a href='kontakt.html'><span>Kontakt</span></a></li>
                 @if (User.IsInRole(SD.CustomerEndUser) || User.IsInRole(SD.ManagerUser))
                 {
-                    <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory"><span>Historia zamówień</span></a></li>
+                    <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory">Historia zamówień</a></li>
                 }
                 @if (User.IsInRole(SD.ManagerUser))
                 {
-                    <li class='active has-sub'>
-                        <a href='portfolio.html'><span>Admin</span></a><span class="rozwin">+</span>
+                    <li>
+                        <label for="drop-5" class="toggle">Admin <i class="fas fa-caret-down"></i></label>
+                        <a href="#">Admin <i class="fas fa-caret-down"></i></a>
+                        <input type="checkbox" id="drop-5" />
                         <ul>
                             <li><a asp-area="Admin" asp-controller="Coupon" asp-action="Index"><span>Kupony</span></a></li>
                             <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><span>Użytkownicy</span></a></li>
@@ -133,7 +135,7 @@
             </a>
         </div>
     </header>
-    <div id="content" class="col-10 offset-1">
+    <div id="content" class="col-12 col-md-10 offset-md-1">
         <main role="main" class="flex-fill">
             @RenderBody()
         </main>
@@ -166,7 +168,7 @@
                 <div class="row col-12 pb-1">
                     <i class="fas fa-phone col-1"></i>
                     <span class="col-1">Zadzwoń </span>
-                    <a class="offset-2" href="tel:999 999 999" title="Telefon 4Ride">999 999 999</a>
+                    <a class="offset-2" href="tel:999 999 999">999 999 999</a>
                 </div>
                 <div class="row col-12 pb-1">
                     <i class="fas fa-envelope col-1"></i>
