@@ -13,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Florist.Utility;
-using Stripe;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Florist.Service;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -41,7 +40,6 @@ namespace Florist
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IDbInitializer, DbInitializer>();
-            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
             services.AddControllersWithViews();
@@ -88,7 +86,6 @@ namespace Florist
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
-            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             dbInitializer.Initialize();
             app.UseAuthentication();
             app.UseAuthorization();

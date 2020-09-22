@@ -1,7 +1,6 @@
 ﻿@model Florist.Models.ViewModel.OrderDetailsCard
 @using Microsoft.Extensions.Options
 
-@inject IOptions<Florist.Utility.StripeSettings> Stripe
 @{
     ViewData["Title"] = "Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -115,20 +114,7 @@
 
                                 @{
                                     var OrderTotalForStrip = Model.OrderHeader.OrderTotal * 100;
-                                }
-                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                        data-key="@Stripe.Value.PublishableKey"
-                                        data-amount="@OrderTotalForStrip"
-                                        data-name="Florist"
-                                        data-label="Place Order"
-                                        data-description="Kwiaty to życie."
-                                        data-locale="auto"
-                                        data-allow-remember-me="false"
-                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
-                                </script>
-                                <script>
-                                    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                                </script>
+                                }          
                                 <div class="row">
                                     <div class="col-3">
                                         <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="btn btn-primary form-control">Powrót</a>
