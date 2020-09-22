@@ -47,7 +47,7 @@ namespace Florist.Data
                 Email = "admin@gmail.com",
                 FirstName = "Patryk",
                 LastName = "Jaworski"
-            }, "zaq1@WSX").GetAwaiter().GetResult();
+            }, "Admin123*").GetAwaiter().GetResult();
 
             IdentityUser user = await _db.Users.FirstOrDefaultAsync(u => u.Email == "admin@gmail.com");
 
