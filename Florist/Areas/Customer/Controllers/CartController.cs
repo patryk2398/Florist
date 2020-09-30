@@ -13,6 +13,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Florist.Areas.Customer.Controllers
 {
@@ -21,13 +26,15 @@ namespace Florist.Areas.Customer.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IEmailSender _emailSender;
+        private readonly IActionContextAccessor _accessor;
         [BindProperty]
         public OrderDetailsCard detailsCard { get; set; }
 
-        public CartController(ApplicationDbContext db, IEmailSender emailSender)
+        public CartController(ApplicationDbContext db, IEmailSender emailSender, IActionContextAccessor accessor)
         {
             _db = db;
             _emailSender = emailSender;
+            _accessor = accessor;
         }
         [Authorize]
         public async Task<IActionResult> Index()
@@ -159,8 +166,9 @@ namespace Florist.Areas.Customer.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Summary")]
-        public async Task<IActionResult> SummaryPOST(string stripeToken)
+        public async Task<IActionResult> SummaryPOST()
         {
+            var ip = _accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString();
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -172,7 +180,8 @@ namespace Florist.Areas.Customer.Controllers
             detailsCard.OrderHeader.UserId = claim.Value;
             detailsCard.OrderHeader.Status = SD.PaymentStatusPending;
             detailsCard.OrderHeader.PickupTime = Convert.ToDateTime(detailsCard.OrderHeader.PickupDate.ToShortDateString() + " " + detailsCard.OrderHeader.PickupTime.ToShortTimeString());
-
+            detailsCard.OrderHeader.ApplicationUser = _db.ApplicationUser.Where(m => m.Id == claim.Value).FirstOrDefault();
+            
             List<OrderDetails> orderDetailsList = new List<OrderDetails>();
             _db.OrderHeader.Add(detailsCard.OrderHeader);
             await _db.SaveChangesAsync();
@@ -211,8 +220,18 @@ namespace Florist.Areas.Customer.Controllers
             _db.ShoppingCart.RemoveRange(detailsCard.listCart);
             HttpContext.Session.SetInt32(SD.ssShoppingCartCount, 0);
             await _db.SaveChangesAsync();
+       
+            int totalAmount = Convert.ToInt32(detailsCard.OrderHeader.OrderTotal * 100);
 
-            return RedirectToAction("Confirm", "Order", new { id = detailsCard.OrderHeader.Id });
+            string jsonTokenString = await PayU.GetAccessToken();
+            JToken jsonToken = JObject.Parse(jsonTokenString);
+            string accessToken = jsonToken.Value<string>("access_token");
+            string tokenType = jsonToken.Value<string>("token_type");
+
+            string jsonUrlString1 = await PayU.CreateNewOrder(accessToken, tokenType, detailsCard, ip);
+            return Redirect(jsonUrlString1);
+
+            //return RedirectToAction("Confirm", "Order", new { id = detailsCard.OrderHeader.Id });
         }
 
     }
