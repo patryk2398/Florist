@@ -14,15 +14,15 @@ namespace Florist.Utility
         public const string ssShoppingCartCount = "ssCartCount";
         public const string ssCouponCode = "ssCouponCode";
 
-        public const string StatusSubmitted = "Submitted";
-        public const string StatusInProcess = "Being Prepared";
-        public const string StatusReady = "Ready for Pickup";
-        public const string StatusCompleted = "Completed";
-        public const string StatusCancelled = "Cancelled";
+        public const string StatusSubmitted = "Przyjęto";
+        public const string StatusInProcess = "W przygotowaniu";
+        public const string StatusReady = "Do odbioru";
+        public const string StatusCompleted = "Odebrano";
+        public const string StatusCancelled = "Anulowano";
 
-        public const string PaymentStatusPending = "Pending";
-        public const string PaymentStatusApproved = "Approved";
-        public const string PaymentStatusRejected = "Rejected";
+        public const string PaymentStatusPending = "Oczekuje";
+        public const string PaymentStatusApproved = "Zatwierdzono";
+        public const string PaymentStatusRejected = "Odrzucono";
 
         public const string Completed = "Completed.png";
         public const string InKitchen = "InKitchen.png";

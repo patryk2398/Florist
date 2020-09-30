@@ -1,10 +1,8 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/florist2020dbserver/databases/Florist_db",
-      "type": "mssql.azure",
-      "connectionId": "DefaultConnection",
-      "secretStore": "LocalSecretsFile"
+      "type": "mssql.local",
+      "connectionId": "DefaultConnection"
     }
   }
 }

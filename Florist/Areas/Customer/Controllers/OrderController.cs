@@ -23,7 +23,7 @@ namespace Florist.Areas.Customer.Controllers
     {  
         private ApplicationDbContext _db;
         private readonly IEmailSender _emailSender;
-        private int PageSize = 2;
+        private int PageSize = 10;
 
         public OrderController(ApplicationDbContext db, IEmailSender emailSender)
         {
