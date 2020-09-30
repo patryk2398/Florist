@@ -1,16 +1,14 @@
 ﻿@model Florist.Models.ViewModel.OrderDetailsViewModel
 @using Florist.Utility
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 <form asp-action="OrderPickup" asp-controller="Order" asp-route-orderId="@Model.OrderHeader.Id" method="post">
-    <div class="container row border ml-1" style="width:100%">
+    <div class="row border m-0 p-0">
         <div class="col-lg-8 col-12" style="border-right: 1px solid #bbb9b9">
             <br />
             <input type="hidden" asp-for="OrderHeader.Id" />
             <div class="form-group row">
                 <div class="col-3">
-                    <label>Nazwa</label>
+                    <label>Imię i nazwisko</label>
                 </div>
                 <div class="col-9">
                     <input asp-for="OrderHeader.PickupName" disabled class="form-control" />
@@ -29,7 +27,7 @@
                     <label>Telefon</label>
                 </div>
                 <div class="col-9">
-                    <input asp-for="OrderHeader.ApplicationUser.PhoneNumber" disabled class="form-control" />
+                    <input asp-for="OrderHeader.PhoneNumber" disabled class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -42,7 +40,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-3">
-                    <label>Data</label>
+                    <label>Data odbioru</label>
                 </div>
                 <div class="col-9">
                     <input value="@Model.OrderHeader.OrderDate.ToShortDateString() @Model.OrderHeader.PickupTime.ToShortTimeString()" disabled class="form-control" />
@@ -57,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-12">
+        <div class="col-lg-4 col-12 pt-3">
             <h4 class="d-flex justify-content-between align-content-center mb-3">
                 <span class="text-muted">ID zamówienia: </span>
                 <span class="badge badge-secondary badge-pill">@Model.OrderHeader.Id</span>
