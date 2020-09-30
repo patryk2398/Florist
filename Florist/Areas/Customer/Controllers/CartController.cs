@@ -230,9 +230,6 @@ namespace Florist.Areas.Customer.Controllers
 
             string jsonUrlString1 = await PayU.CreateNewOrder(accessToken, tokenType, detailsCard, ip);
             return Redirect(jsonUrlString1);
-
-            //return RedirectToAction("Confirm", "Order", new { id = detailsCard.OrderHeader.Id });
         }
-
     }
 }

@@ -61,7 +61,7 @@ namespace Florist.Data
                     "\"currencyCode\": \"PLN\",  " +
                     " \"extOrderId\": \"" + detailsCard.OrderHeader.Id.ToString() + "\",  " +
                     "\"totalAmount\": \"" + (detailsCard.OrderHeader.OrderTotal * 100).ToString() + "\",  " +
-                    " \"continueUrl\": \"https://florist20200914221430.azurewebsites.net/\",  " +
+                    " \"continueUrl\": \"https://florist20200914221430.azurewebsites.net/Customer/Order/Confirm/"+detailsCard.OrderHeader.Id+"\",  " +
                     "\"buyer\": " +
                     "{" +
                     "\"email\": \"" + detailsCard.OrderHeader.ApplicationUser.Email + "\"," +

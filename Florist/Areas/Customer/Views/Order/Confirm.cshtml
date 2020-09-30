@@ -5,28 +5,28 @@
 }
 
 <br />
-<div>
-    <div class="row px-3">
-        <div class="col-8">
-            <h2 class="text-info">Order Confirmed</h2>
+<div class="col-10 offset-1 mb-5">
+    <div class="row p-0">
+        <div class="col-8 p-0">
+            <h2 class="text-info">Zamówienie przyjęte</h2>
         </div>
-        <div class="col-4 text-right">
-            <a asp-action="Index" asp-controller="Home" class="btn btn-success form-control">New order</a>
+        <div class="col-4 p-0">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-success form-control">Kontynuuj zakupy</a>
         </div>
     </div>
     @if(Model.OrderHeader != null)
     {
-        <div style="color: maroon" class="p-3">
-            Your order has been confirmed! Pelase see the order summary below.
+        <div style="color: maroon" class="py-3">
+            Twoje zamówienie zostało przyjęte! Poniżej umieszczono podsumowanie Twojego zamówienia.
             <br />
-            Feel free to contact us if you have any questions.
+            W razie jakichkolwiek pytań skontaktuj się z nami.
         </div>
         <partial name="_IndividualOrderDetails" model="Model" />
     }
     else
     {
         <div class="text-danger">
-            Error... Please try again
+            Błąd... Skontaktuj się z nami.
         </div>
     }
 </div>
