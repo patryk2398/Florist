@@ -4,100 +4,105 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post">
-    @if (Model.listCart.Count > 0)
-    {
-        <br />
-        <input id="userId" asp-for="@Model.listCart[0].ApplicationUserId" hidden />
-        <div class="backgroundWhiteBorder">
-            <div class="container">
-                <div class="card">
-                    <div class="card-header bg-dark text-light ml-0 row container">
-                        <div class="col-6">
-                            <i class="fa fa-shopping-cart"></i> &nbsp;
-                            Koszyk
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        @foreach (var item in Model.listCart)
-                        {
-                            <div class="row">
-                                <div class=" d-lg-block col-lg-2 text-center py-2">
-                                    <img src="@item.Flower.Image" class="rounded" width="100" height="100" />
-                                </div>
-                                <div class="col-12 text-sm-center col-lg-5 text-lg-left" style="margin-top:35px;">
-                                    <h4><strong>@item.Flower.Name</strong></h4>
-                                </div>
-                                <div class="col-12 text-sm-center col-lg-5 text-lg-right row" style="margin-top:35px;">
-                                    <div class="col-4 text-md-right" style="padding-top:5px;">
-                                        <h5><strong>@item.Flower.Price<span>,00 zł</span> <span class="text-muted">x</span> @item.Count </strong></h5>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-lg-6">
-                                        <div class="float-right mx-1">
-                                            <button type="submit" class="btn btn-primary" asp-action="Plus" asp-route-cartId="@item.Id">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="float-right mx-1">
-                                            <button type="submit" class="btn btn-danger" asp-action="Minus" asp-route-cartId="@item.Id">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-sm-4 col-lg-2 text-right">
-                                        <button type="submit" class="btn btn-outline-danger" asp-action="Remove" asp-route-cartId="@item.Id">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </div>
+    <form method="post">
+        @if (Model.listCart.Count > 0)
+        {
+            <br />
+            <input id="userId" asp-for="@Model.listCart[0].ApplicationUserId" hidden />
+            <div class="mb-5">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header bg-dark text-light ml-0 row container">
+                            <div class="col-6">
+                                <i class="fa fa-shopping-cart"></i> &nbsp;
+                                Koszyk
                             </div>
-                            <hr />
-                        }
-                        <div class="row">
-                            <div class="col-12 col-md-5">
+                        </div>
+                        <div class="card-body">
+                            @foreach (var item in Model.listCart)
+                            {
                                 <div class="row">
-                                    <div class="col-7">
-                                        <input asp-for="@Model.OrderHeader.CouponCode" id="txtCouponCode" class="form-control" placeholder="Kupon..." />
+                                    <div class=" d-lg-block col-lg-2 text-center py-2">
+                                        <img src="@item.Flower.Image" class="rounded" width="100" height="100" />
                                     </div>
-                                    <div class="col-5" style="margin-top:2px;">
-                                        <button type="submit" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="AddCoupon">
-                                            Zatwierdź
-                                        </button>
-                                        <button type="submit" class="btn btn-sm form-control btn-outline-danger" style="display:none" id="btnRemoveCoupon" asp-action="RemoveCoupon">
-                                            Usuń
-                                        </button>
+                                    <div class="col-12 text-sm-center col-lg-5 text-lg-left" style="margin-top:35px;">
+                                        <h4><strong>@item.Flower.Name</strong></h4>
+                                    </div>
+                                    <div class="col-12 text-sm-center col-lg-5 text-lg-right row" style="margin-top:35px;">
+                                        <div class="col-4 text-md-right" style="padding-top:5px;">
+                                            <h5><strong>@item.Flower.Price<span>,00 zł</span> <span class="text-muted">x</span> @item.Count </strong></h5>
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-lg-6">
+                                            <div class="float-right mx-1">
+                                                <button type="submit" class="btn btn-primary" asp-action="Plus" asp-route-cartId="@item.Id">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="float-right mx-1">
+                                                <button type="submit" class="btn btn-danger" asp-action="Minus" asp-route-cartId="@item.Id">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-sm-4 col-lg-2 text-right">
+                                            <button type="submit" class="btn btn-outline-danger" asp-action="Remove" asp-route-cartId="@item.Id">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6 offset-md-1 col-lg-4 offset-lg-3 pr-4">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between bg-light">
-                                        <span class="text-info"> Razem </span>
-                                        <strong class="text-info"><span id="txtOrderTotal">@Model.OrderHeader.OrderTotal<span>,00 zł</span></span></strong>
-                                    </li>
-                                </ul>
+                                <hr />
+                            }
+                            <div class="row">
+                                <div class="col-12 col-md-5">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <input asp-for="@Model.OrderHeader.CouponCode" id="txtCouponCode" class="form-control" placeholder="Kupon..." />
+                                        </div>
+                                        <div class="col-5" style="margin-top:2px;">
+                                            <button type="submit" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="AddCoupon">
+                                                Zatwierdź
+                                            </button>
+                                            <button type="submit" class="btn btn-sm form-control btn-outline-danger" style="display:none" id="btnRemoveCoupon" asp-action="RemoveCoupon">
+                                                Usuń
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 offset-md-1 col-lg-4 offset-lg-3 pr-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between bg-light">
+                                            <span class="text-info"> Razem </span>
+                                            <strong class="text-info"><span id="txtOrderTotal">@Model.OrderHeader.OrderTotal<span>,00 zł</span></span></strong>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-3">
-                                <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-primary form-control">Powrót</a>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-3">
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-primary form-control">Powrót</a>
+                                </div>
+                                <div class="col-3 offset-6">
+                                    <a asp-action="Summary" asp-area="Customer" asp-controller="Cart" class="btn btn-success form-control">Dalej</a>
+                                </div>
                             </div>
-                            <div class="col-3 offset-6">
-                                <a asp-action="Summary" asp-area="Customer" asp-controller="Cart" class="btn btn-success form-control">Dalej</a>
-                            </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-    else
-    {
-        <div class="backgroundWhiteBorder"> Brak produktów w koszyku...</div>
-    }
-</form>
+        }
+        else
+        {
+            <div class="col-10 offset-1 mb-5">
+                <div> Brak produktów w koszyku...</div>
+                <div class="col-4 p-0 mt-5">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-success form-control">Powrót do strony głównej</a>
+                </div>
+            </div>
+        }
+    </form>
 @section Scripts
 {
     <script>

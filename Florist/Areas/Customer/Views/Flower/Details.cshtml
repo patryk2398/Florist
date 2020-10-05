@@ -25,10 +25,10 @@
                 <h2 style="color: mediumseagreen; font-weight:600;" class="col-12">@Model.Flower.Name</h2>
                 <label class="col-12 text-justify">@Model.Flower.Description</label>
                 <div class="form-group row mt-2">
-                    <h2 class="col-4">@Model.Flower.Price,00 zł</h2>
-                    <span class="col-1 offset-4 p-2">Ilość: </span>
+                    <h2 class="col-5">@Model.Flower.Price,00 zł</h2>
+                    <span class="col-2 offset-2 p-2">Ilość: </span>
                     <input asp-for="Count" class="form-control col-2" />
-                    <span class="p-2">szt.</span>
+                    <span class="col-1 p-2">szt.</span>
                 </div>
                 &nbsp;&nbsp;&nbsp;<span asp-validation-for="Count" class="text-danger"></span>
                 <div class="col-6">

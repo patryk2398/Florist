@@ -107,7 +107,7 @@
                         <li><a asp-action="Index_Balloon_Gift" asp-controller="Flower" asp-area="Customer">Balony z helem</a></li>
                     </ul>
                 </li>
-                <li><a href='kontakt.html'><span>Kontakt</span></a></li>
+                <li><a asp-action="Contact" asp-controller="Home" asp-area="Customer"><span>Kontakt</span></a></li>
                 @if (User.IsInRole(SD.CustomerEndUser) || User.IsInRole(SD.ManagerUser))
                 {
                     <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory">Historia zamówień</a></li>
