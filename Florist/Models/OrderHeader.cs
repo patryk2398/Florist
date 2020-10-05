@@ -15,6 +15,8 @@ namespace Florist.Models
         [Required]
         public string UserId { get; set; }
 
+        public string PayUId { get; set; }
+
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Composition.Convention;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +18,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Florist.Areas.Customer.Controllers
 {
@@ -36,6 +41,42 @@ namespace Florist.Areas.Customer.Controllers
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            OrderHeader OrderHeader = await _db.OrderHeader.Include(o => o.ApplicationUser).FirstOrDefaultAsync(o => o.Id == id && o.UserId == claim.Value);
+            
+            string PayUId = OrderHeader.PayUId;
+
+            string jsonTokenString = await PayU.GetAccessToken();
+            JToken jsonToken = JObject.Parse(jsonTokenString);
+            string accessToken = jsonToken.Value<string>("access_token");
+            string tokenType = jsonToken.Value<string>("token_type");
+
+            var baseAddress = new Uri("https://secure.snd.payu.com/");
+
+            using (var httpClient = new HttpClient { BaseAddress = baseAddress })
+            {
+
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("authorization", tokenType + " " + accessToken);
+
+                using (var response = await httpClient.GetAsync("api/v2_1/orders/"+PayUId+""))
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+
+                    dynamic obj = JsonConvert.DeserializeObject<dynamic>(responseData);
+                    string status = obj.status.statusCode;
+
+                    if(status != "SUCCESS")
+                    {
+                        OrderHeader.PaymentStatus = SD.PaymentStatusRejected;
+                    }
+                    else
+                    {
+                        OrderHeader.PaymentStatus = SD.PaymentStatusApproved;
+                        OrderHeader.Status = SD.StatusSubmitted;
+                    }
+                    await _db.SaveChangesAsync();
+                }
+            }
 
             OrderDetailsViewModel orderDetailsViewModel = new OrderDetailsViewModel()
             {

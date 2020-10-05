@@ -220,16 +220,20 @@ namespace Florist.Areas.Customer.Controllers
             _db.ShoppingCart.RemoveRange(detailsCard.listCart);
             HttpContext.Session.SetInt32(SD.ssShoppingCartCount, 0);
             await _db.SaveChangesAsync();
-       
-            int totalAmount = Convert.ToInt32(detailsCard.OrderHeader.OrderTotal * 100);
 
             string jsonTokenString = await PayU.GetAccessToken();
             JToken jsonToken = JObject.Parse(jsonTokenString);
             string accessToken = jsonToken.Value<string>("access_token");
             string tokenType = jsonToken.Value<string>("token_type");
 
-            string jsonUrlString1 = await PayU.CreateNewOrder(accessToken, tokenType, detailsCard, ip);
-            return Redirect(jsonUrlString1);
+            string jsonUrlString = await PayU.CreateNewOrder(accessToken, tokenType, detailsCard, ip);
+            string[] array = jsonUrlString.Split('?','&','=');
+            string PayUId = array[2];
+
+            detailsCard.OrderHeader.PayUId = PayUId;
+            await _db.SaveChangesAsync();
+
+            return Redirect(jsonUrlString);
         }
     }
 }
