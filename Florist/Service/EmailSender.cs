@@ -28,7 +28,7 @@ namespace Florist.Service
             var client = new SendGridClient(sendGridKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("admin@florist.com", "Flormix Florist"),
+                From = new EmailAddress("floristsender@gmail.com", "Florist store"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

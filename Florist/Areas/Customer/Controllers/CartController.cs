@@ -25,15 +25,13 @@ namespace Florist.Areas.Customer.Controllers
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _db;
-        private readonly IEmailSender _emailSender;
         private readonly IActionContextAccessor _accessor;
         [BindProperty]
         public OrderDetailsCard detailsCard { get; set; }
 
-        public CartController(ApplicationDbContext db, IEmailSender emailSender, IActionContextAccessor accessor)
+        public CartController(ApplicationDbContext db, IActionContextAccessor accessor)
         {
             _db = db;
-            _emailSender = emailSender;
             _accessor = accessor;
         }
         [Authorize]

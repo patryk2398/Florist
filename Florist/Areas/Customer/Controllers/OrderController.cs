@@ -71,6 +71,8 @@ namespace Florist.Areas.Customer.Controllers
                     }
                     else
                     {
+                        await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == claim.Value).FirstOrDefault().Email, "Florist - zamówienie przyjęte " + OrderHeader.Id.ToString(), "Zamówienie zostało opłacone oraz przyjęte do realizacji.");
+
                         OrderHeader.PaymentStatus = SD.PaymentStatusApproved;
                         OrderHeader.Status = SD.StatusSubmitted;
                     }
@@ -175,6 +177,9 @@ namespace Florist.Areas.Customer.Controllers
             OrderHeader orderHeader = await _db.OrderHeader.FindAsync(OrderId);
             orderHeader.Status = SD.StatusInProcess;
             await _db.SaveChangesAsync();
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
+                  Email, "Florist - Zamówienie nr " + orderHeader.Id.ToString() + " w produkcji" + orderHeader.Id.ToString(),
+                  "Twoje zamówienie własnie jest przygotowywane.");
             return RedirectToAction("ManageOrder", "Order");
         }
 
@@ -185,8 +190,8 @@ namespace Florist.Areas.Customer.Controllers
             orderHeader.Status = SD.StatusReady;
             await _db.SaveChangesAsync();
             await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
-                   Email, "Florist - Order Ready For Pickup" + orderHeader.Id.ToString(),
-                   "Order is ready for pickup.");
+                   Email, "Florist - Zamówienie nr " + orderHeader.Id.ToString() +" gotowe do odbioru" + orderHeader.Id.ToString(),
+                   "Twoje zamówienie jest gotowe do odbioru.");
             return RedirectToAction("ManageOrder", "Order");
         }
 
@@ -197,8 +202,8 @@ namespace Florist.Areas.Customer.Controllers
             orderHeader.Status = SD.StatusCancelled;
             await _db.SaveChangesAsync();
             await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
-                    Email, "Florist - Order Cancelled" + orderHeader.Id.ToString(),
-                    "Order has been cancelled successfully.");
+                    Email, "Florist - Anulowanie zamówienia nr" + orderHeader.Id.ToString(),
+                    "Twoje zamówienie zostało anulowane.");
             return RedirectToAction("ManageOrder", "Order");
         }
 
@@ -291,8 +296,8 @@ namespace Florist.Areas.Customer.Controllers
             orderHeader.Status = SD.StatusCompleted;
             await _db.SaveChangesAsync();
             await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().
-                   Email, "Florist - Order Completed" + orderHeader.Id.ToString(),
-                   "Order has beend completed successfully.");
+                   Email, "Florist - Zamówienie nr " + orderHeader.Id.ToString() + " odebrane" + orderHeader.Id.ToString(),
+                   "Twoje zamówienie zostało odebrane.");
             return RedirectToAction("OrderPickup", "Order");
         }
     }
