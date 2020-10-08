@@ -1,6 +1,5 @@
 ﻿nav {
-    margin: 0;
-    padding: 10px 0px;
+    margin: 10px 0;
 }
 
 #hamburger
@@ -10,7 +9,6 @@
 
 #logo {
     display: block;
-    padding: 0 30px;
     float: left;
 }
 
@@ -46,37 +44,33 @@ nav ul {
 
 nav a {
     display: block;
-    margin: 0 20px;
-    color: #FFF;
+    margin-left: 35px;
     font-size: 18px;
     text-decoration: none;
-    font-weight: 700;
-    line-height: 60px;
+    font-weight: 600;
+    line-height: 80px;
 }
 
-nav a:hover {
-    text-decoration: none;
-    color: mediumseagreen;
-}
+    nav a:hover {
+        text-decoration: none;
+        color: #c79c6e;
+    }
 
 nav ul li li a:hover {
-    color: #000000;
+    color: #fff;
 }
 
 nav ul li ul li a {
     line-height: normal;
-}
-
-nav ul li ul li:hover {
-    background: #2ba260;
+    color: #c79c6e;
 }
 
 nav ul ul {
     display: none;
     position: absolute;
     top: 60px;
-    background-color: mediumseagreen;
-    border: solid 1px #111111;
+    background-color: #534741;
+    border: dotted 1px #c79c6e;
     border-bottom: none;
 }
 
@@ -84,14 +78,17 @@ nav ul li:hover > ul {
     display: inherit;
 }
 
+nav ul ul a{
+    margin: 0;
+}
+
 nav ul ul li {
-    width: 170px;
     height: auto;
     float: none;
     display: list-item;
     position: relative;
-    border-bottom: solid 1px #111111;
-    padding: 8px 0;
+    border-bottom: dotted 1px #c79c6e;
+    padding: 8px 15px;
 }
 
 nav ul ul ul li {
@@ -109,34 +106,41 @@ li > a:only-child:after {
 }
 
 
-@media all and (max-width : 1100px) {
+@media all and (max-width : 1199px) {
     nav a {
-        line-height: 23px;
-        padding: 10px 0;
+        line-height: 20px;
+    }
+
+    #logo{
+        padding: 2px 6px 6px 6px;
     }
 
     nav {
         padding: 0;
-    }
-
-    #logo{
-        padding: 10px 0;
+        margin: 0;
     }
 
     #hamburger {
         display: block;
-        margin: 37px 20px 0 0;
+        margin: 25px 20px 0 0;
         float: right;
     }
 
     #shopping_cart {
-        margin: 22px 20px 0 0;
+        margin: 18px 20px 0 0;
         position: relative;
         
     }
 
-    #user_icon {
-        margin: 22px 10px 0 0;
+    nav ul a {
+        padding: 12px 20px;
+        color: #000;
+        font-size: 18px;
+        margin: 0;
+    }
+
+    nav ul a:hover{
+        color: #ffffff;
     }
 
     .toggle + a,
@@ -148,7 +152,7 @@ li > a:only-child:after {
         display: block;
         color: #000;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 600;
         margin-bottom: 0;
         padding: 10px 20px;
         cursor: pointer;
@@ -160,9 +164,9 @@ li > a:only-child:after {
 
     nav ul li {
         width: 100%;
-        border-bottom: solid 1px #111111;
-        background-color: mediumseagreen;
-        
+        height: auto;
+        border-bottom: dotted 1px #c79c6e;
+        background-color: #534741; 
     }
 
     nav ul ul a {
@@ -173,10 +177,6 @@ li > a:only-child:after {
 
     nav ul ul {
         margin-bottom: -1px;
-    }
-
-    li:hover {
-        background-color: #2ba260;
     }
 
     nav ul ul {
@@ -190,11 +190,7 @@ li > a:only-child:after {
 
         nav ul ul li {
             width: 100%;
-        }
-    
-    nav ul ul li a:hover{
-        color: #444444;
-    }
+        } 
 }
 
 @media all and (max-width : 330px) {
