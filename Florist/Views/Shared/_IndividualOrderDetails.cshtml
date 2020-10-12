@@ -82,17 +82,17 @@
                     </li>
                 }
                 <li class="list-group-item d-flex justify-content-between bg-light">
-                    <span class="text-info">Razem (PLN)</span>
-                    <strong class="text-info">@Model.OrderHeader.OrderTotal,00 zł</strong>
+                    <span class="goldColor">Razem (PLN)</span>
+                    <strong class="goldColor">@Model.OrderHeader.OrderTotal,00 zł</strong>
                 </li>
             </ul>
             @if (Model.OrderHeader.Status.Equals(SD.StatusReady) && (User.IsInRole(SD.ManagerUser)))
             {
-                <button type="submit" class="btn btn-success form-control"><i class="far fa-thumbs-up"></i>Potwierdź odbiór</button>
+                <button type="submit" class="goldButton col-10 offset-1"><i class="far fa-thumbs-up"></i>&nbsp; POTWIERDŹ ODBIÓR</button>
             }
             else
             {
-                <button type="submit" disabled class="btn btn-info form-control">@Model.OrderHeader.Status</button>
+                <button type="submit" disabled class="goldButton col-10 offset-1">@Model.OrderHeader.Status</button>
             }
         </div>
     </div>

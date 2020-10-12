@@ -5,174 +5,174 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="col-12 col-md-10 offset-md-1 mb-5">Dodaj</h1>
-<hr />
-<div class="col-12 col-md-10 offset-md-1 mb-5">
-    <form asp-action="Create" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group row">
-            <div class="col-lg-2 col-3">
-                <label asp-for="Name" class="control-label"></label>
+    <div class="col-12 col-md-10 offset-md-1 mb-5">
+        <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Dodaj</h1>
+        <hr />
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-lg-2 col-3">
+                    <label asp-for="Name" class="control-label"></label>
+                </div>
+                <div class="col-lg-5 col-9">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="col-lg-5 col-9">
-                <input asp-for="Name" class="form-control" />
+            <div class="form-group row">
+                <div class="col-lg-2 col-3">
+                    <label asp-for="Description" class="control-label"></label>
+                </div>
+                <div class="col-lg-5 col-9">
+                    <textarea asp-for="Description" class="form-control" rows="14"></textarea>
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-2 col-3">
-                <label asp-for="Description" class="control-label"></label>
+            <div class="form-group row">
+                <div class="col-lg-2 col-3">
+                    <label asp-for="Price" class="control-label"></label>
+                </div>
+                <div class="col-lg-5 col-9">
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="col-lg-5 col-9">
-                <textarea asp-for="Description" class="form-control" rows="14"></textarea>
+            <div class="form-group row">
+                <div class="col-lg-2 col-3">
+                    <label asp-for="Image" class="control-label"></label>
+                </div>
+                <div class="col-lg-5 col-9">
+                    <input type="file" name="files" multiple class="form-control" />
+                </div>
             </div>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-2 col-3">
-                <label asp-for="Price" class="control-label"></label>
+            <br />
+            <div class="row font-weight-bold">
+                <label class="col-3">Kwiaty</label>
+                <label class="col-3">Okazje</label>
+                <label class="col-3">Flowerboxy</label>
+                <label class="col-3">Prezenty</label>
             </div>
-            <div class="col-lg-5 col-9">
-                <input asp-for="Price" class="form-control" />
+            <div class="row">
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Roses_Flowers" /> @Html.DisplayNameFor(model => model.Roses_Flowers)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Birthday_Occasion" /> @Html.DisplayNameFor(model => model.Birthday_Occasion)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Roses_Flowerbox" /> @Html.DisplayNameFor(model => model.Roses_Flowerbox)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="TeddyBear_Gift" /> @Html.DisplayNameFor(model => model.TeddyBear_Gift)
+                    </label>
+                </div>
             </div>
-            <span asp-validation-for="Price" class="text-danger"></span>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-2 col-3">
-                <label asp-for="Image" class="control-label"></label>
+            <div class="row">
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Sunflowers_Flowers" /> @Html.DisplayNameFor(model => model.Sunflowers_Flowers)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="NameDay_Occasion" /> @Html.DisplayNameFor(model => model.NameDay_Occasion)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Cloves_Flowerbox" /> @Html.DisplayNameFor(model => model.Cloves_Flowerbox)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="SweetBouquets_Gift" /> @Html.DisplayNameFor(model => model.SweetBouquets_Gift)
+                    </label>
+                </div>
             </div>
-            <div class="col-lg-5 col-9">
-                <input type="file" name="files" multiple class="form-control" />
+            <div class="row">
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Gerbers_Flowers" /> @Html.DisplayNameFor(model => model.Gerbers_Flowers)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Wedding_Occasion" /> @Html.DisplayNameFor(model => model.Wedding_Occasion)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Mix_Flowerbox" /> @Html.DisplayNameFor(model => model.Mix_Flowerbox)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="TeaAndCofee_Gift" /> @Html.DisplayNameFor(model => model.TeaAndCofee_Gift)
+                    </label>
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="row font-weight-bold">
-            <label class="col-3">Kwiaty</label>
-            <label class="col-3">Okazje</label>
-            <label class="col-3">Flowerboxy</label>
-            <label class="col-3">Prezenty</label>
-        </div>
-        <div class="row">
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Roses_Flowers" /> @Html.DisplayNameFor(model => model.Roses_Flowers)
-                </label>
+            <div class="row">
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Bouquets_Flowers" /> @Html.DisplayNameFor(model => model.Bouquets_Flowers)
+                    </label>
+                </div>
+                <div class="form-group form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Birth_Occasion" /> @Html.DisplayNameFor(model => model.Birth_Occasion)
+                    </label>
+                </div>
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Basket_Gift" /> @Html.DisplayNameFor(model => model.Basket_Gift)
+                    </label>
+                </div>
             </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Birthday_Occasion" /> @Html.DisplayNameFor(model => model.Birthday_Occasion)
-                </label>
+            <div class="row">
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Thanks_Occasion" /> @Html.DisplayNameFor(model => model.Thanks_Occasion)
+                    </label>
+                </div>
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Balloon_Gift" /> @Html.DisplayNameFor(model => model.Balloon_Gift)
+                    </label>
+                </div>
             </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Roses_Flowerbox" /> @Html.DisplayNameFor(model => model.Roses_Flowerbox)
-                </label>
+            <div class="row">
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Congratulations_Occasion" /> @Html.DisplayNameFor(model => model.Congratulations_Occasion)
+                    </label>
+                </div>
             </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TeddyBear_Gift" /> @Html.DisplayNameFor(model => model.TeddyBear_Gift)
-                </label>
+            <div class="row">
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Condolence_Occasion" /> @Html.DisplayNameFor(model => model.Condolence_Occasion)
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Sunflowers_Flowers" /> @Html.DisplayNameFor(model => model.Sunflowers_Flowers)
-                </label>
+            <div class="row">
+                <div class="form-group form-check offset-3 col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Anniversary_Occasion" /> @Html.DisplayNameFor(model => model.Anniversary_Occasion)
+                    </label>
+                </div>
             </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="NameDay_Occasion" /> @Html.DisplayNameFor(model => model.NameDay_Occasion)
-                </label>
+            <br />
+            <div class="form-group row">
+                <input type="submit" value="DODAJ" class="goldButton col-2" />
+                <a asp-action="Index" class="brownButton col-2 offset-1">POWRÓT</a>
             </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Cloves_Flowerbox" /> @Html.DisplayNameFor(model => model.Cloves_Flowerbox)
-                </label>
-            </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SweetBouquets_Gift" /> @Html.DisplayNameFor(model => model.SweetBouquets_Gift)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Gerbers_Flowers" /> @Html.DisplayNameFor(model => model.Gerbers_Flowers)
-                </label>
-            </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Wedding_Occasion" /> @Html.DisplayNameFor(model => model.Wedding_Occasion)
-                </label>
-            </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Mix_Flowerbox" /> @Html.DisplayNameFor(model => model.Mix_Flowerbox)
-                </label>
-            </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TeaAndCofee_Gift" /> @Html.DisplayNameFor(model => model.TeaAndCofee_Gift)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Bouquets_Flowers" /> @Html.DisplayNameFor(model => model.Bouquets_Flowers)
-                </label>
-            </div>
-            <div class="form-group form-check col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Birth_Occasion" /> @Html.DisplayNameFor(model => model.Birth_Occasion)
-                </label>
-            </div>
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Basket_Gift" /> @Html.DisplayNameFor(model => model.Basket_Gift)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Thanks_Occasion" /> @Html.DisplayNameFor(model => model.Thanks_Occasion)
-                </label>
-            </div>
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Balloon_Gift" /> @Html.DisplayNameFor(model => model.Balloon_Gift)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Congratulations_Occasion" /> @Html.DisplayNameFor(model => model.Congratulations_Occasion)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Condolence_Occasion" /> @Html.DisplayNameFor(model => model.Condolence_Occasion)
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check offset-3 col-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Anniversary_Occasion" /> @Html.DisplayNameFor(model => model.Anniversary_Occasion)
-                </label>
-            </div>
-        </div>
-        <br />
-        <div class="form-group row">
-            <input type="submit" value="Dodaj" class="btn btn-info form-control col-2" />
-            <a asp-action="Index" class="btn btn-success text-white form-control col-2 offset-1">Powrót</a>
-        </div>
-    </form>
+        </form>
 
-</div>
+    </div>

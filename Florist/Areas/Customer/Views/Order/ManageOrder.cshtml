@@ -5,20 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="col-10 offset-1 mb-5">
-        <h2 class="text-info">Zarządzaj zamówieniami</h2>
+    <div class="col-10 offset-1">
+        <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Zarządzaj zamówieniami</h1>
+        <hr />
         <form method="post">
             <br />
             @if (Model.Count > 0)
             {
-                <div class="container row bg-white p-2 border mb-3 rounded">
+                <div class="row bg-white p-2 border mb-3 rounded">
                     @foreach (var item in Model)
                     {
                         <div class="col-12 pb-3 pt-3">
                             <div>
                                 <div class="row">
                                     <div class="col-4">
-                                        Order Number: @item.OrderHeader.Id
+                                        Zamówienie nr: @item.OrderHeader.Id
                                         <ul class="text-info">
                                             @foreach (var details in item.OrderDetails)
                                             {
@@ -29,7 +30,7 @@
                                     <div class="col-4 pb-2">
                                         <div class="input-group pb-2">
                                             <div class="input-group-append">
-                                                <span class="input-group-text">Time</span>
+                                                <span class="input-group-text">Data odbioru</span>
                                             </div>
                                             <input type="text" class="border rounded form-control" readonly value="@item.OrderHeader.PickupTime" />
                                         </div>
@@ -46,22 +47,22 @@
                                         @if (item.OrderHeader.Status.Equals(SD.StatusSubmitted))
                                         {
                                             <div class="col-12">
-                                                <button type="submit" asp-action="OrderPrepare" asp-route-OrderId="@item.OrderHeader.Id" class="btn btn-info form-control mb-3">
-                                                    <i class="fas fa-check">&nbsp; W produkcji</i>
+                                                <button type="submit" asp-action="OrderPrepare" asp-route-OrderId="@item.OrderHeader.Id" class="col-12 goldButton mb-4">
+                                                    <i class="fas fa-check">&nbsp; W PRODUKCJI</i>
                                                 </button>
-                                                <button type="submit" asp-action="OrderCancel" asp-route-OrderId="@item.OrderHeader.Id" class="btn btn-danger form-control mb-3">
-                                                    <i class="fas fa-times">&nbsp; Anuluj</i>
+                                                <button type="submit" asp-action="OrderCancel" asp-route-OrderId="@item.OrderHeader.Id" class="col-12 brownButton">
+                                                    <i class="fas fa-times">&nbsp; ANULUJ</i>
                                                 </button>
                                             </div>
                                         }
                                         else if (item.OrderHeader.Status.Equals(SD.StatusInProcess))
                                         {
                                             <div class="col-12">
-                                                <button type="submit" asp-action="OrderReady" asp-route-OrderId="@item.OrderHeader.Id" class="btn btn-success form-control mb-3">
-                                                    <i class="fas fa-flag-checkered">&nbsp; Do odbioru</i>
+                                                <button type="submit" asp-action="OrderReady" asp-route-OrderId="@item.OrderHeader.Id" class="col-12 goldButton mb-4">
+                                                    <i class="fas fa-flag-checkered">&nbsp; DO ODBIORU</i>
                                                 </button>
-                                                <button type="submit" asp-action="OrderCancel" asp-route-OrderId="@item.OrderHeader.Id" class="btn btn-danger form-control mb-3">
-                                                    <i class="fas fa-times">&nbsp; Anuluj</i>
+                                                <button type="submit" asp-action="OrderCancel" asp-route-OrderId="@item.OrderHeader.Id" class="col-12 brownButton">
+                                                    <i class="fas fa-times">&nbsp; ANULUJ</i>
                                                 </button>
                                             </div>
                                         }

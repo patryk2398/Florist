@@ -5,7 +5,9 @@
 }
 
     <div>
-        <h1 class="text-center naglowek">Nowości w naszej ofercie</h1>
+        <h1 class="text-center naglowek">
+            <span class="spanShadow">Nowości w naszej ofercie</span>
+        </h1>
         <br />
         @if (Model.Count() > 0)
         {
@@ -39,9 +41,9 @@
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
-                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                             </div>
                                         </a>
                                     }
@@ -55,9 +57,9 @@
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
-                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                             </div>
                                         </a>
                                     }
@@ -75,9 +77,9 @@
                                         <img class="card-img-top"
                                              src="@Html.DisplayFor(m => item.Image)"
                                              alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0">@Html.DisplayFor(m => item.Name)</h5>
-                                            <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title font-weight-bold goldColor mb-0">@Html.DisplayFor(m => item.Name)</h5>
+                                            <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                         </div>
                                     </a>
                                 }
@@ -93,7 +95,7 @@
             <p>Brak produktów do wyświetlenia...</p>
         }
         <br />
-        <div id="aboutUs" class="col-12 col-md-10 offset-md-1 mt-5">
+        <div id="aboutUs" class="col-12 col-xl-10 offset-xl-1 mt-5 mb-5 px-0">
             <h1 class="mb-4">O nas</h1>
             <h5>
                 Florist to kwiaciarnia, która zawodowo i z
@@ -103,13 +105,17 @@
                 staramy, żeby nasze bukiety były doskonałe,
                 dlatego specjalnie dla Państwa wykonujemy także indywidualne realizacje.
             </h5>
-            <a href="#" class="whiteButtonLink">
-                <div class="whiteButton text-center col-lg-4 offset-lg-4 mt-4 col-8 offset-2">
-                    <h3>Zobacz więcej</h3>
-                </div>
-            </a>
+            <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
+                <a href="#" class="whiteButtonLink">
+                    <div class="whiteButton text-center">
+                        <h3>ZOBACZ WIĘCEJ</h3>
+                    </div>
+                </a>
+            </div>
         </div>
-        <h1 class="text-center mt-5 naglowek">Nasze bestsellery</h1>
+        <h1 class="text-center naglowek">
+            <span class="spanShadow">Nasze bestsellery</span>
+        </h1>
         <br />
         @if (Model.Count() > 0)
         {
@@ -143,9 +149,9 @@
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
-                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                             </div>
                                         </a>
                                     }
@@ -159,9 +165,9 @@
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="font-weight-bold fuchsia-rose-text">@Html.DisplayFor(m => item.Name)</h5>
-                                                <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                             </div>
                                         </a>
                                     }
@@ -179,9 +185,9 @@
                                         <img class="card-img-top"
                                              src="@Html.DisplayFor(m => item.Image)"
                                              alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0">@Html.DisplayFor(m => item.Name)</h5>
-                                            <p class="chili-pepper-text mb-0">@Html.DisplayFor(m => item.Price) PLN</p>
+                                        <div class="card-body text-center">
+                                            <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                            <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                         </div>
                                     </a>
                                 }
@@ -196,13 +202,13 @@
         {
             <p>Brak produktów do wyświetlenia...</p>
         }
-        <article class="opinions mt-5">
+        <article class="opinions mt-5 col-12 col-xl-10 offset-xl-1 px-0">
             <h4 class="text-center mb-2 text-uppercase">Jesteśmy dumni, że nas doceniacie</h4>
             <h1 class="text-center mb-4">CO O NAS MÓWIĄ KLIENCI</h1>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <p class="text-center col-lg-4 offset-lg-4 col-8 offset-2">
+                        <p class="text-center col-8 offset-2">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
                             sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
                             id consequuntur distinctio aliquid! Odio, alias!
@@ -210,7 +216,7 @@
                         <h5 class="text-center">Jan Kowalski</h5>
                     </div>
                     <div class="carousel-item">
-                        <p class="text-center col-lg-4 offset-lg-4 col-8 offset-2">
+                        <p class="text-center  col-8 offset-2">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
                             sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
                             id consequuntur distinctio aliquid! Odio, alias!
@@ -218,7 +224,7 @@
                         <h5 class="text-center">Małgorzata Rojewska</h5>
                     </div>
                     <div class="carousel-item">
-                        <p class="text-center col-lg-4 offset-lg-4 col-8 offset-2">
+                        <p class="text-center  col-8 offset-2">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
                             sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
                             id consequuntur distinctio aliquid! Odio, alias!
@@ -235,42 +241,13 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <a href="#" class="whiteButtonLink">
-                <div class="whiteButton text-center col-lg-2 offset-lg-5 mt-4 col-6 offset-3">
-                    <h3>Zobacz więcej</h3>
-                </div>
-            </a>
-        </article>
-        <div class="col-12 col-md-10 offset-md-1 mb-5">
-            <h1 class="text-center mt-5 naglowek">Dlaczego warto nas wybrać?</h1>
-            <div class="mb-4 row">
-                <div class="mt-5 col-md-4 col-12 text-center">
-                    <img src="~/img/dlaczego1.png" style="width:60%; border-radius:250px;" />
-                    <h4 class="mt-2">Lorem ipsum</h4>
-                    <p class="col-10 offset-1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore.
-                    </p>
-                </div>
-                <div class="mt-5 col-md-4 col-12 text-center">
-                    <img src="~/img/dlaczego2.jpg" style="width:60%; border-radius:250px;" />
-                    <h4 class="mt-2">Lorem ipsum</h4>
-                    <p class="col-10 offset-1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore.
-                    </p>
-                </div>
-                <div class="mt-5 col-md-4 col-12 text-center">
-                    <img src="~/img/dlaczego3.png" style="width:60%; border-radius:250px;" />
-                    <h4 class="mt-2">Lorem ipsum</h4>
-                    <p class="col-10 offset-1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore.
-                    </p>
-                </div>
+            <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
+                <a href="#" class="whiteButtonLink">
+                    <div class="whiteButton text-center">
+                        <h3>ZOBACZ WIĘCEJ</h3>
+                    </div>
+                </a>
             </div>
-        </div>
-
-
+        </article>
     </div>
 

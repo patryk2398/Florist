@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Dodaj</h1>
-<hr />
-<div>
+<div class="col-12 col-md-10 offset-md-1 mb-5">
+    <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Dodaj</h1>
+    <hr />
     <div>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -57,8 +57,8 @@
             <br />
             <br />
             <div class="form-group row">
-                <input type="submit" value="Dodaj" class="btn btn-info form-control col-2" />
-                <a asp-action="Index" class="btn btn-success text-white form-control col-2 offset-1">Powrót</a>
+                <input type="submit" value="DODAJ" class="goldButton col-2" />
+                <a asp-action="Index" class="brownButton col-2 offset-1">POWRÓT</a>
             </div>
         </form>
     </div>

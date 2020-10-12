@@ -4,18 +4,15 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="col-12">
-        <form style="float:left" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button class="btn text-dark" type="submit">Wyloguj</button>
-        </form>
+    <div> 
         <a style="float:left" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-            <i class="far fa-user" style="font-size: 36px;"></i>
+            PANEL KLIENTA
         </a>
     </div>
 }
 else
 {
-    <a asp-area="Identity" asp-page="/Account/Login"><i class="far fa-user" style="font-size: 36px;"></i></a>
+<a asp-area="Identity" asp-page="/Account/Login">PANEL KLIENTA</a>
 }
 
 @*@using Microsoft.AspNetCore.Identity

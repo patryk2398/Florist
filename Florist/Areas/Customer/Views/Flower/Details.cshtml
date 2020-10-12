@@ -11,10 +11,10 @@
         @if (User.IsInRole(SD.ManagerUser))
         {
             <div class="row offset-11">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model.FlowerId">
+                <a class="goldButton py-2" asp-action="Edit" asp-route-Id="@Model.FlowerId">
                     <i class="fas fa-edit"></i>
                 </a>&nbsp;
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model.FlowerId">
+                <a class="brownButton py-2" asp-action="Delete" asp-route-Id="@Model.FlowerId">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
@@ -22,7 +22,7 @@
         <div class="row" style="font-family:'Lucida Sans Unicode';">
             <img src="@Model.Flower.Image" class="col-lg-6 col-md-12 col-sm-12 col-xs-12" />
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <h2 style="color: mediumseagreen; font-weight:600;" class="col-12">@Model.Flower.Name</h2>
+                <h2 font-weight:600;" class="goldColor col-12">@Model.Flower.Name</h2>
                 <label class="col-12 text-justify">@Model.Flower.Description</label>
                 <div class="form-group row mt-2">
                     <h2 class="col-5">@Model.Flower.Price,00 zł</h2>
@@ -31,8 +31,8 @@
                     <span class="col-1 p-2">szt.</span>
                 </div>
                 &nbsp;&nbsp;&nbsp;<span asp-validation-for="Count" class="text-danger"></span>
-                <div class="col-6">
-                    <button type="submit" value="Add to Cart" class="button"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka</button>
+                <div class="ml-3">
+                    <button type="submit" value="Add to Cart" class="goldButton"><i class="fas fa-shopping-cart"></i> DODAJ DO KOSZYKA</button>
                 </div>
             </div>
         </div>

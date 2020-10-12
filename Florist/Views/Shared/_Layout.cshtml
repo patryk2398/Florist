@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="~/css/menu.css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
         <script src="https://kit.fontawesome.com/41074f745e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
@@ -23,14 +24,13 @@
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
         <link rel="stylesheet" href="~/css/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="~/css/menu.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/41074f745e.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body class="d-flex flex-column" style="min-height: 100vh">
     <header>
-        <nav>
+        <nav class="col-xl-11 offset-xl-1 col-12 p-0">
             <div id="logo">
                 <a asp-area="Customer" asp-controller="Home" asp-action="Index">
                     <img id="logo" src="~/img/logo.png" />
@@ -54,139 +54,133 @@
                     <i style="font-size:36px;" class="fas fa-shopping-cart"></i>(0)
                 </a>
             }
-            <div id="user_icon">
-                <partial name="_LoginPartial" />
-            </div>
             <input type="checkbox" id="drop" />
             <ul class="menu">
                 <li>
-                    <label for="drop-1" class="toggle">Kwiaty <i class="fas fa-caret-down"></i></label>
-                    <a href="#">Kwiaty <i class="fas fa-caret-down"></i></a>
+                    <label for="drop-1" class="toggle">KWIATY <i class="fas fa-caret-down"></i></label>
+                    <a href="#">KWIATY <i class="fas fa-caret-down"></i></a>
                     <input type="checkbox" id="drop-1" />
                     <ul>
-                        <li><a asp-action="Index_Roses_Flowers" asp-controller="Flower" asp-area="Customer">Róże</a></li>
-                        <li><a asp-action="Index_Sunflowers_Flowers" asp-controller="Flower" asp-area="Customer">Słoneczniki</a></li>
-                        <li><a asp-action="Index_Gerbers_Flowers" asp-controller="Flower" asp-area="Customer">Gerbery</a></li>
-                        <li><a asp-action="Index_Bouquets_Flowers" asp-controller="Flower" asp-area="Customer">Bukiety mieszane</a></li>
+                        <li><a asp-action="Index_Roses_Flowers" asp-controller="Flower" asp-area="Customer">RÓŻE</a></li>
+                        <li><a asp-action="Index_Sunflowers_Flowers" asp-controller="Flower" asp-area="Customer">SŁONECZNIKI</a></li>
+                        <li><a asp-action="Index_Gerbers_Flowers" asp-controller="Flower" asp-area="Customer">GERBERY</a></li>
+                        <li><a asp-action="Index_Bouquets_Flowers" asp-controller="Flower" asp-area="Customer">BUKIETY MIESZANE</a></li>
                     </ul>
                 </li>
                 <li>
-                    <label for="drop-2" class="toggle">Okazje <i class="fas fa-caret-down"></i></label>
-                    <a href="#">Okazje <i class="fas fa-caret-down"></i></a>
+                    <label for="drop-2" class="toggle">OKAZJE <i class="fas fa-caret-down"></i></label>
+                    <a href="#">OKAZJE <i class="fas fa-caret-down"></i></a>
                     <input type="checkbox" id="drop-2" />
                     <ul>
-                        <li><a asp-action="Index_Birthday_Occasion" asp-controller="Flower" asp-area="Customer">Urodziny</a></li>
-                        <li><a asp-action="Index_NameDay_Occasion" asp-controller="Flower" asp-area="Customer">Imieniny</a></li>
-                        <li><a asp-action="Index_Wedding_Occasion" asp-controller="Flower" asp-area="Customer">Ślub</a></li>
-                        <li><a asp-action="Index_Birth_Occasion" asp-controller="Flower" asp-area="Customer">Narodziny</a></li>
-                        <li><a asp-action="Index_Thanks_Occasion" asp-controller="Flower" asp-area="Customer">Podziękowania</a></li>
-                        <li><a asp-action="Index_Congratulations_Occasion" asp-controller="Flower" asp-area="Customer">Gratulacje</a></li>
-                        <li><a asp-action="Index_Condolence_Occasion" asp-controller="Flower" asp-area="Customer">Kondolencje</a></li>
-                        <li><a asp-action="Index_Anniversary_Occasion" asp-controller="Flower" asp-area="Customer">Rocznica</a></li>
+                        <li><a asp-action="Index_Birthday_Occasion" asp-controller="Flower" asp-area="Customer">URODZINY</a></li>
+                        <li><a asp-action="Index_NameDay_Occasion" asp-controller="Flower" asp-area="Customer">IMIENINY</a></li>
+                        <li><a asp-action="Index_Wedding_Occasion" asp-controller="Flower" asp-area="Customer">ŚLUB</a></li>
+                        <li><a asp-action="Index_Birth_Occasion" asp-controller="Flower" asp-area="Customer">NARODZINY</a></li>
+                        <li><a asp-action="Index_Thanks_Occasion" asp-controller="Flower" asp-area="Customer">PODZIĘKOWANIA</a></li>
+                        <li><a asp-action="Index_Congratulations_Occasion" asp-controller="Flower" asp-area="Customer">GRATULACJE</a></li>
+                        <li><a asp-action="Index_Condolence_Occasion" asp-controller="Flower" asp-area="Customer">KONDOLENCJE</a></li>
+                        <li><a asp-action="Index_Anniversary_Occasion" asp-controller="Flower" asp-area="Customer">ROCZNICA</a></li>
                     </ul>
                 </li>
                 <li>
-                    <label for="drop-3" class="toggle">Flowerboxy <i class="fas fa-caret-down"></i></label>
-                    <a href="#">Flowerboxy <i class="fas fa-caret-down"></i></a>
+                    <label for="drop-3" class="toggle">FLOWERBOXY <i class="fas fa-caret-down"></i></label>
+                    <a href="#">FLOWERBOXY <i class="fas fa-caret-down"></i></a>
                     <input type="checkbox" id="drop-3" />
                     <ul>
-                        <li><a asp-action="Index_Roses_Flowerbox" asp-controller="Flower" asp-area="Customer">Flowerbox róże</a></li>
-                        <li><a asp-action="Index_Cloves_Flowerbox" asp-controller="Flower" asp-area="Customer">Flowerbox goździki</a></li>
-                        <li><a asp-action="Index_Mix_Flowerbox" asp-controller="Flower" asp-area="Customer">Flowerbox mix</a></li>
+                        <li><a asp-action="Index_Roses_Flowerbox" asp-controller="Flower" asp-area="Customer">FLOWERBOX RÓŻE</a></li>
+                        <li><a asp-action="Index_Cloves_Flowerbox" asp-controller="Flower" asp-area="Customer">FLOWERBOX GOŹDZIKI</a></li>
+                        <li><a asp-action="Index_Mix_Flowerbox" asp-controller="Flower" asp-area="Customer">FLOWERBOX MIX</a></li>
                     </ul>
                 </li>
                 <li>
-                    <label for="drop-4" class="toggle">Prezenty <i class="fas fa-caret-down"></i></label>
-                    <a href="#">Prezenty <i class="fas fa-caret-down"></i></a>
+                    <label for="drop-4" class="toggle">PREZENTY <i class="fas fa-caret-down"></i></label>
+                    <a href="#">PREZENTY <i class="fas fa-caret-down"></i></a>
                     <input type="checkbox" id="drop-4" />
                     <ul>
-                        <li><a asp-action="Index_TeddyBear_Gift" asp-controller="Flower" asp-area="Customer">Miś z róż</a></li>
-                        <li><a asp-action="Index_SweetBouquets_Gift" asp-controller="Flower" asp-area="Customer">Słodki bukiet</a></li>
-                        <li><a asp-action="Index_TeaAndCofee_Gift" asp-controller="Flower" asp-area="Customer">Kawy i herbaty</a></li>
-                        <li><a asp-action="Index_Basket_Gift" asp-controller="Flower" asp-area="Customer">Kosze</a></li>
-                        <li><a asp-action="Index_Balloon_Gift" asp-controller="Flower" asp-area="Customer">Balony z helem</a></li>
+                        <li><a asp-action="Index_TeddyBear_Gift" asp-controller="Flower" asp-area="Customer">MIŚ Z RÓŻ</a></li>
+                        <li><a asp-action="Index_SweetBouquets_Gift" asp-controller="Flower" asp-area="Customer">SŁODKI BUKIET</a></li>
+                        <li><a asp-action="Index_TeaAndCofee_Gift" asp-controller="Flower" asp-area="Customer">KAWY I HERBATY</a></li>
+                        <li><a asp-action="Index_Basket_Gift" asp-controller="Flower" asp-area="Customer">KOSZE</a></li>
+                        <li><a asp-action="Index_Balloon_Gift" asp-controller="Flower" asp-area="Customer">BALONY Z HELEM</a></li>
                     </ul>
                 </li>
-                <li><a asp-action="Contact" asp-controller="Home" asp-area="Customer"><span>Kontakt</span></a></li>
-                @if (User.IsInRole(SD.CustomerEndUser) || User.IsInRole(SD.ManagerUser))
-                {
-                    <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderHistory">Historia zamówień</a></li>
-                }
+                <li><a asp-action="Contact" asp-controller="Home" asp-area="Customer"><span>KONTAKT</span></a></li>
+                <li><partial name="_LoginPartial" /></li>
                 @if (User.IsInRole(SD.ManagerUser))
                 {
                     <li>
-                        <label for="drop-5" class="toggle">Admin <i class="fas fa-caret-down"></i></label>
-                        <a href="#">Admin <i class="fas fa-caret-down"></i></a>
+                        <label for="drop-5" class="toggle">ADMIN <i class="fas fa-caret-down"></i></label>
+                        <a href="#">ADMIN <i class="fas fa-caret-down"></i></a>
                         <input type="checkbox" id="drop-5" />
                         <ul>
-                            <li><a asp-area="Admin" asp-controller="Coupon" asp-action="Index"><span>Kupony</span></a></li>
-                            <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><span>Użytkownicy</span></a></li>
-                            <li><a asp-area="Customer" asp-controller="Order" asp-action="ManageOrder"><span>Zamówienia</span></a></li>
-                            <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderPickup"><span>Do odbioru</span></a></li>
+                            <li><a asp-area="Admin" asp-controller="Coupon" asp-action="Index"><span>KUPONY</span></a></li>
+                            <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><span>UŻYTKOWNICY</span></a></li>
+                            <li><a asp-area="Customer" asp-controller="Order" asp-action="ManageOrder"><span>ZAMÓWIENIA</span></a></li>
+                            <li><a asp-area="Customer" asp-controller="Order" asp-action="OrderPickup"><span>DO ODBIORU</span></a></li>
                         </ul>
                     </li>
                 }
             </ul>
 
         </nav>
-        <a href="#" style="text-decoration: none;">
-            <div id="homepage_top_image">
-                <h1 style="color:#fff; font-size:80px; font-family:Dubai; text-align:center; margin: 150px 0; text-shadow: 2px 2px #000;">Sprawdź letnie okazje</h1>
-            </div>
+        <a href="#"  style="text-decoration: none;">
+            <img src="~/img/test.png" class="col-xl-10 offset-xl-1 col-12 p-0" style="height: auto; position: static;"/>
         </a>
     </header>
-    <div id="content" style="min-height: auto;">
+    <div id="content">
         <main role="main" class="flex-fill">
             @RenderBody()
         </main>
     </div>
-    <div id="homepage_bottom_image"></div>
-    <footer>
-        <div class="row">
-            <div class="col-lg-3 offset-lg-1 text-center col-md-10 offset-md-1">
-                <div>
-                    <h4>Informacje</h4>
-                    <hr />
-                    <a href="#">O nas</a>
-                    <a href="#">Regulamin</a>
-                    <a href="#">Dostawa</a>
-                    <a href="#">Kotakt</a>
-                    <a href="#">Koszyk</a>
-                </div>
-                <div class="pt-5">
-                    <h4>Płatności</h4>
-                    <hr />
-                    <img src="~/img/paypal.png" />
-                    <img src="~/img/payu.png" />
-                    <img src="~/img/mastercard.png" />
-                    <img src="~/img/visa.png" />
-                </div>
-            </div>
-            <div class="col-lg-5 offset-lg-2 text-center col-md-10 offset-md-1 pt-md-5 pt-lg-0 pt-sm-5 pt-5">
-                <h4>Kontakt</h4>
+<footer class="col-12 col-xl-10 offset-xl-1 p-0 pb-3">
+    <div id="footerRect"></div>
+    <div class="row">
+        <div class="col-lg-3 offset-lg-1 text-center col-md-10 offset-md-1">
+            <div>
+                <h4>Informacje</h4>
                 <hr />
-                <div class="row col-12 pb-1">
-                    <i class="fas fa-phone col-1"></i>
-                    <span class="col-1">Zadzwoń </span>
-                    <a class="offset-2" href="tel:999 999 999">999 999 999</a>
-                </div>
-                <div class="row col-12 pb-1">
-                    <i class="fas fa-envelope col-1"></i>
-                    <span class="col-1">Napisz </span>
-                    <span class="offset-2">kontakt@twojadomena.pl</span>
-                </div>
-                <div class="row col-12">
-                    <i class="fas fa-home col-1"></i>
-                    <span class="col-1">Adres: </span>
-                    <span class="offset-2">ul. Główna 16</span>
-                </div>
-                <div class="row col-12">
-                    <span class="offset-4">46-046 Ligota Turawska</span>
-                </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.4169894062748!2d18.17907031585086!3d50.78638027098306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105875bb53b2c1%3A0x5f8bcc8cdc22d68a!2sG%C5%82%C3%B3wna%2016%2C%2046-045%20Ligota%20Turawska!5e0!3m2!1spl!2spl!4v1595086890993!5m2!1spl!2spl" class="col-12" height="320" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <a href="#">O nas</a>
+                <a href="#">Regulamin</a>
+                <a href="#">Dostawa</a>
+                <a href="#">Kotakt</a>
+                <a href="#">Koszyk</a>
+            </div>
+            <div class="pt-5">
+                <h4>Płatności</h4>
+                <hr />
+                <img src="~/img/paypal.png" />
+                <img src="~/img/payu.png" />
             </div>
         </div>
-    </footer>
+        <div class="col-lg-5 offset-lg-2 text-center col-md-10 offset-md-1 pt-md-5 pt-lg-0 pt-sm-5 pt-5">
+            <h4>Kontakt</h4>
+            <hr />
+            <div class="row col-12 pb-1">
+                <i class="fas fa-phone col-1"></i>
+                <span class="col-1">Zadzwoń </span>
+                <a class="offset-2" href="tel:999 999 999">999 999 999</a>
+            </div>
+            <div class="row col-12 pb-1">
+                <i class="fas fa-envelope col-1"></i>
+                <span class="col-1">Napisz </span>
+                <span class="offset-2">kontakt@twojadomena.pl</span>
+            </div>
+            <div class="row col-12">
+                <i class="fas fa-home col-1"></i>
+                <span class="col-1">Adres: </span>
+                <span class="offset-2">ul. Główna 16</span>
+            </div>
+            <div class="row col-12">
+                <span class="offset-4">46-046 Ligota Turawska</span>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.4169894062748!2d18.17907031585086!3d50.78638027098306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105875bb53b2c1%3A0x5f8bcc8cdc22d68a!2sG%C5%82%C3%B3wna%2016%2C%2046-045%20Ligota%20Turawska!5e0!3m2!1spl!2spl!4v1595086890993!5m2!1spl!2spl" class="col-12" height="320" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+    <div class="text-center mt-4" style="font-size: smaller">
+        <span>Copyright © 2020 Kwiaciarnia Florist. Wszelkie prawa zastrzeżone.</span><br />
+        <span>Realizacja Patryk Jaworski.</span>
+    </div>
+</footer>
     <environment include="Development">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>

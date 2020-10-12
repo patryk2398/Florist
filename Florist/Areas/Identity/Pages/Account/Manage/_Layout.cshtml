@@ -9,22 +9,23 @@
     }
 }
 
-    <div class="col-10 offset-1 mb-5">
-        <h2>Zarządzanie profilem</h2>
-
-        <div>
-            <h4>Zmień ustawienia konta</h4>
-            <hr />
-            <div class="row">
-                <div class="col-md-3">
-                    <partial name="_ManageNav" />
-                </div>
-                <div class="col-md-9">
-                    @RenderBody()
-                </div>
+<div class="col-10 offset-1 mb-5">
+    <h2 class="goldColor">Zarządzanie profilem</h2> 
+    <div>
+        <hr />
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button style="float: right;" class="brownButton" type="submit"><i class="fas fa-sign-out-alt"></i>&nbsp WYLOGUJ</button>
+        </form>
+        <div class="row">
+            <div class="col-md-3">
+                <partial name="_ManageNav" />
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
             </div>
         </div>
     </div>
+</div>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
