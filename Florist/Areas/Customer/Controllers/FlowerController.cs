@@ -177,7 +177,7 @@ namespace Florist.Areas.Admin.Controllers
             }
             else
             {
-                var uploads = Path.Combine(webRootPath, @"img\" + SD.DefaultFlowerImage);
+                var uploads = Path.Combine(webRootPath, @"images\" + SD.DefaultFlowerImage);
                 System.IO.File.Copy(uploads, webRootPath + @"\img\" + flower.Id + ".png");
                 flowerFromDb.Image = @"\img\" + flower.Id + ".png";
             }

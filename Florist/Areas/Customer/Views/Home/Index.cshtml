@@ -4,40 +4,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div>
-        <h1 class="text-center naglowek">
-            <span class="spanShadow">Nowości w naszej ofercie</span>
-        </h1>
-        <br />
-        @if (Model.Count() > 0)
-        {
-            <div id="multi-item-example" class="carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
+<div>
+    <h1 class="text-center naglowek">
+        <span class="spanShadow">Nowości w naszej ofercie</span>
+    </h1>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <div id="multi-item-example" class="d-none d-lg-block carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 5); i++)
+                {
+                    if (i == 0)
                     {
-                        if (i == 0)
-                        {
-                            <li data-target="#multi-item-example" data-slide-to="@i.ToString()" class="active"></li>
-                        }
-                        else
-                        {
-                            <li data-target="#multi-item-example" data-slide-to="@i.ToString()"></li>
-                        }
+                        <li data-target="#multi-item-example" data-slide-to="@i.ToString()" class="active"></li>
                     }
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
+                    else
                     {
-                        if (i == 0)
-                        {
-                            <div class="carousel-item active">
+                        <li data-target="#multi-item-example" data-slide-to="@i.ToString()"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 5); i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active offset-1">
 
-                                @if (Model.Count() < 5)
+                            @if (Model.Count() < 6)
+                            {
+                                for (int j = 0; j < Model.Count(); j++)
                                 {
-                                    for (int j = 0; j < Model.Count(); j++)
+                                    try
                                     {
-                                        var item = Model.ElementAt(i * 4 + j);
-                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                        var item = Model.ElementAt(i * 5 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
@@ -47,13 +49,20 @@
                                             </div>
                                         </a>
                                     }
-                                }
-                                else
-                                {
-                                    for (int j = 0; j < 4; j++)
+                                    catch (Exception ex)
                                     {
-                                        var item = Model.ElementAt(i * 4 + j);
-                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int j = 0; j < 5; j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 5 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
@@ -63,17 +72,24 @@
                                             </div>
                                         </a>
                                     }
-                                }
+                                    catch (Exception ex)
+                                    {
 
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="carousel-item ">
-                                @for (int j = 0; j < Convert.ToDouble(Model.Count() - i * 4); j++)
+                                    }
+                                }
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item offset-1">
+                            @for (int j = 0; j < 5; j++)
+                            {
+                                try
                                 {
-                                    var item = Model.ElementAt(i * 4 + j);
-                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                    var item = Model.ElementAt(i * 5 + j);
+                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
                                         <img class="card-img-top"
                                              src="@Html.DisplayFor(m => item.Image)"
                                              alt="Card image cap">
@@ -83,69 +99,55 @@
                                         </div>
                                     </a>
                                 }
-                            </div>
-                        }
+                                catch (Exception ex)
+                                {
 
+                                }
+                            }
+                        </div>
                     }
-                </div>
+
+                }
             </div>
-        }
-        else
-        {
-            <p>Brak produktów do wyświetlenia...</p>
-        }
-        <br />
-        <div id="aboutUs" class="col-12 col-xl-10 offset-xl-1 mt-5 mb-5 px-0">
-            <h1 class="mb-4">O nas</h1>
-            <h5>
-                Florist to kwiaciarnia, która zawodowo i z
-                przyjemnością zajmuje się doręczaniem szczęścia we
-                Wrocławiu. Bukiety, które komponuje każdego dnia mają tylko jedno,
-                ale jakże ważne zadanie: wywołać uśmiech na twarzy odbiorcy. Bardzo się
-                staramy, żeby nasze bukiety były doskonałe,
-                dlatego specjalnie dla Państwa wykonujemy także indywidualne realizacje.
-            </h5>
-            <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
-                <a href="#" class="whiteButtonLink">
-                    <div class="whiteButton text-center">
-                        <h3>ZOBACZ WIĘCEJ</h3>
-                    </div>
-                </a>
-            </div>
+            <a data-target="#multi-item-example" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-target="#multi-item-example" class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <h1 class="text-center naglowek">
-            <span class="spanShadow">Nasze bestsellery</span>
-        </h1>
-        <br />
-        @if (Model.Count() > 0)
-        {
-            <div id="multi-item-example" class="carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
+
+        <div id="multi-item-example-sm" class="d-block d-lg-none carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 2); i++)
+                {
+                    if (i == 0)
                     {
-                        if (i == 0)
-                        {
-                            <li data-target="#multi-item-example" data-slide-to="@i.ToString()" class="active"></li>
-                        }
-                        else
-                        {
-                            <li data-target="#multi-item-example" data-slide-to="@i.ToString()"></li>
-                        }
+                        <li data-target="#multi-item-example-sm" data-slide-to="@i.ToString()" class="active"></li>
                     }
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 4); i++)
+                    else
                     {
-                        if (i == 0)
-                        {
-                            <div class="carousel-item active">
+                        <li data-target="#multi-item-example-sm" data-slide-to="@i.ToString()"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 2); i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active offset-1">
 
-                                @if (Model.Count() < 5)
+                            @if (Model.Count() < 3)
+                            {
+                                for (int j = 0; j < Model.Count(); j++)
                                 {
-                                    for (int j = 0; j < Model.Count(); j++)
+                                    try
                                     {
-                                        var item = Model.ElementAt(i * 4 + j);
-                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                        var item = Model.ElementAt(i * 2 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
@@ -155,13 +157,20 @@
                                             </div>
                                         </a>
                                     }
-                                }
-                                else
-                                {
-                                    for (int j = 0; j < 4; j++)
+                                    catch (Exception ex)
                                     {
-                                        var item = Model.ElementAt(i * 4 + j);
-                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int j = 0; j < 2; j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 2 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
                                             <img class="card-img-top"
                                                  src="@Html.DisplayFor(m => item.Image)"
                                                  alt="Card image cap">
@@ -171,83 +180,346 @@
                                             </div>
                                         </a>
                                     }
-                                }
+                                    catch (Exception ex)
+                                    {
 
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="carousel-item ">
-                                @for (int j = 0; j < Convert.ToDouble(Model.Count() - i * 4); j++)
+                                    }
+                                }
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item offset-1">
+                            @for (int j = 0; j < 2; j++)
+                            {
+                                try
                                 {
-                                    var item = Model.ElementAt(i * 4 + j);
-                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-3 " style="float:left">
+                                    var item = Model.ElementAt(i * 2 + j);
+                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
                                         <img class="card-img-top"
                                              src="@Html.DisplayFor(m => item.Image)"
                                              alt="Card image cap">
                                         <div class="card-body text-center">
-                                            <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                            <h5 class="card-title font-weight-bold goldColor mb-0">@Html.DisplayFor(m => item.Name)</h5>
                                             <p>@Html.DisplayFor(m => item.Price) PLN</p>
                                         </div>
                                     </a>
                                 }
-                            </div>
-                        }
+                                catch (Exception ex)
+                                {
 
+                                }
+                            }
+                        </div>
                     }
+                }
+            </div>
+            <a data-target="#multi-item-example-sm" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-target="#multi-item-example-sm" class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+    else
+    {
+        <p class="col-12 col-md-10 offset-md-1">Brak produktów do wyświetlenia...</p>
+    }
+    <br />
+    <div id="aboutUs" class="col-12 col-xl-10 offset-xl-1 mt-5 mb-5 px-0">
+        <h1 class="mb-4">O nas</h1>
+        <h5>
+            Florist to kwiaciarnia, która zawodowo i z
+            przyjemnością zajmuje się doręczaniem szczęścia we
+            Wrocławiu. Bukiety, które komponuje każdego dnia mają tylko jedno,
+            ale jakże ważne zadanie: wywołać uśmiech na twarzy odbiorcy. Bardzo się
+            staramy, żeby nasze bukiety były doskonałe,
+            dlatego specjalnie dla Państwa wykonujemy także indywidualne realizacje.
+        </h5>
+        <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
+            <a href="#" class="whiteButtonLink">
+                <div class="whiteButton text-center">
+                    <h3>ZOBACZ WIĘCEJ</h3>
                 </div>
-            </div>
-        }
-        else
-        {
-            <p>Brak produktów do wyświetlenia...</p>
-        }
-        <article class="opinions mt-5 col-12 col-xl-10 offset-xl-1 px-0">
-            <h4 class="text-center mb-2 text-uppercase">Jesteśmy dumni, że nas doceniacie</h4>
-            <h1 class="text-center mb-4">CO O NAS MÓWIĄ KLIENCI</h1>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <p class="text-center col-8 offset-2">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
-                            sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
-                            id consequuntur distinctio aliquid! Odio, alias!
-                        </p>
-                        <h5 class="text-center">Jan Kowalski</h5>
-                    </div>
-                    <div class="carousel-item">
-                        <p class="text-center  col-8 offset-2">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
-                            sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
-                            id consequuntur distinctio aliquid! Odio, alias!
-                        </p>
-                        <h5 class="text-center">Małgorzata Rojewska</h5>
-                    </div>
-                    <div class="carousel-item">
-                        <p class="text-center  col-8 offset-2">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
-                            sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
-                            id consequuntur distinctio aliquid! Odio, alias!
-                        </p>
-                        <h5 class="text-center">Agnieszka Zielińska</h5>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
-                <a href="#" class="whiteButtonLink">
-                    <div class="whiteButton text-center">
-                        <h3>ZOBACZ WIĘCEJ</h3>
-                    </div>
-                </a>
-            </div>
-        </article>
+            </a>
+        </div>
     </div>
+    <h1 class="text-center naglowek">
+        <span class="spanShadow">Nasze bestsellery</span>
+    </h1>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <div id="multi-item-example-2" class="d-none d-lg-block carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 5); i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#multi-item-example-2" data-slide-to="@i.ToString()" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#multi-item-example-2" data-slide-to="@i.ToString()"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 5); i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active offset-1">
+
+                            @if (Model.Count() < 6)
+                            {
+                                for (int j = 0; j < Model.Count(); j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 5 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int j = 0; j < 5; j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 5 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item offset-1">
+                            @for (int j = 0; j < 5; j++)
+                            {
+                                try
+                                {
+                                    var item = Model.ElementAt(i * 5 + j);
+                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-2 " style="float:left">
+                                        <img class="card-img-top"
+                                             src="@Html.DisplayFor(m => item.Image)"
+                                             alt="Card image cap">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title font-weight-bold goldColor mb-0">@Html.DisplayFor(m => item.Name)</h5>
+                                            <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                        </div>
+                                    </a>
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                        </div>
+                    }
+
+                }
+            </div>
+            <a data-target="#multi-item-example-2" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-target="#multi-item-example-2" class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div id="multi-item-example-sm-2" class="d-block d-lg-none carousel slide carousel-multi-item col-12 col-md-10 offset-md-1" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 2); i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#multi-item-example-sm-2" data-slide-to="@i.ToString()" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#multi-item-example-sm-2" data-slide-to="@i.ToString()"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < Math.Ceiling(Convert.ToDouble(Model.Count()) / 2); i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active offset-1">
+
+                            @if (Model.Count() < 3)
+                            {
+                                for (int j = 0; j < Model.Count(); j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 2 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int j = 0; j < 2; j++)
+                                {
+                                    try
+                                    {
+                                        var item = Model.ElementAt(i * 2 + j);
+                                        <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
+                                            <img class="card-img-top"
+                                                 src="@Html.DisplayFor(m => item.Image)"
+                                                 alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <h5 class="font-weight-bold goldColor">@Html.DisplayFor(m => item.Name)</h5>
+                                                <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                            </div>
+                                        </a>
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item offset-1">
+                            @for (int j = 0; j < 2; j++)
+                            {
+                                try
+                                {
+                                    var item = Model.ElementAt(i * 2 + j);
+                                    <a asp-action="Details" asp-controller="Flower" asp-route-Id="@item.Id" class="col-5 " style="float:left">
+                                        <img class="card-img-top"
+                                             src="@Html.DisplayFor(m => item.Image)"
+                                             alt="Card image cap">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title font-weight-bold goldColor mb-0">@Html.DisplayFor(m => item.Name)</h5>
+                                            <p>@Html.DisplayFor(m => item.Price) PLN</p>
+                                        </div>
+                                    </a>
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <a data-target="#multi-item-example-sm-2" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-target="#multi-item-example-sm-2" class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+    else
+    {
+        <p class="col-12 col-md-10 offset-md-1">Brak produktów do wyświetlenia...</p>
+    }
+    <article class="opinions mt-5 col-12 col-xl-10 offset-xl-1 px-0">
+        <h4 class="text-center mb-2 text-uppercase">Jesteśmy dumni, że nas doceniacie</h4>
+        <h1 class="text-center mb-4">CO O NAS MÓWIĄ KLIENCI</h1>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <p class="text-center col-8 offset-2">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
+                        sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
+                        id consequuntur distinctio aliquid! Odio, alias!
+                    </p>
+                    <h5 class="text-center">Jan Kowalski</h5>
+                </div>
+                <div class="carousel-item">
+                    <p class="text-center  col-8 offset-2">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
+                        sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
+                        id consequuntur distinctio aliquid! Odio, alias!
+                    </p>
+                    <h5 class="text-center">Małgorzata Rojewska</h5>
+                </div>
+                <div class="carousel-item">
+                    <p class="text-center  col-8 offset-2">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dicta dolores perspiciatis
+                        sapiente ipsam voluptate doloremque unde veniam corporis nisi temporibus, vel sit reprehenderit
+                        id consequuntur distinctio aliquid! Odio, alias!
+                    </p>
+                    <h5 class="text-center">Agnieszka Zielińska</h5>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="align-content-center col-lg-4 offset-lg-4 mt-4 col-6 offset-3">
+            <a href="#" class="whiteButtonLink">
+                <div class="whiteButton text-center">
+                    <h3>ZOBACZ WIĘCEJ</h3>
+                </div>
+            </a>
+        </div>
+    </article>
+</div>
 

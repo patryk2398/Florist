@@ -168,17 +168,8 @@ footer {
 }
 /*Koniec Slidera*/
 
-#homepage_bottom_image {
-    background-image: url(/img/homepage_image.jpg);
-    height: 350px;
-    
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    display: table;
-}
-
 #aboutUs {
-    background-image: url(/img/onas.jpg);
+    background-image: url(/images/onas.jpg);
     text-align: center;
     color: white;
     padding: 60px;
@@ -191,7 +182,7 @@ footer {
 }
 
 .opinions {
-    background-image: url(/img/opinie.jpg);
+    background-image: url(/images/opinie.jpg);
     background-size: cover;
     width: 100%;
     color: #fff;
