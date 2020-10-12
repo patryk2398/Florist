@@ -70,30 +70,23 @@ namespace Florist.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Imię")]
             public string FirstName { get; set; }
-
             [Required]
             [Display(Name = "Nazwisko")]
             public string LastName { get; set; }
-
             [Required]
             [Display(Name = "Miejscowość")]
             public string City { get; set; }
-
             [Required]
             [Display(Name = "Ulica")]
             public string Street { get; set; }
-
             [Required]
             [Display(Name = "Numer domu")]
             public string HouseNumber { get; set; }
-
             [Display(Name = "Numer mieszkania")]
             public string ApartmentNumber { get; set; }
-
             [Required]
             [Display(Name = "Kod pocztowy")]
             public string PostalCode { get; set; }
-
             [Display(Name = "Telefon")]
             public string PhoneNumber { get; set; }
         }

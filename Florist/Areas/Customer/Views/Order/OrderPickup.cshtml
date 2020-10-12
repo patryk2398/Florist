@@ -7,9 +7,13 @@
     <form method="get">
         <br />
         <div class="col-10 offset-1 mb-5">
-            <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Zamówienie gotowe do odbioru</h1>
+            <div class="row">
+                <div class="col-6">
+                    <h1 style="color: mediumseagreen;">Zamówienia gotowe do odbioru</h1>
+                </div>
+            </div>
             <hr />
-            <div class="order border-secondary" style="height:60px;">
+            <div class="container border border-secondary" style="height:60px;">
                 <div class="row container">
                     <div class="col-11">
                         <div class="row" style="padding-top:10px;">
@@ -26,7 +30,7 @@
                     </div>
                     <div class="col-1">
                         <div class="row" style="padding-top:10px;">
-                            <button type="submit" name="submit" value="Search" class="brownButton py-1">
+                            <button type="submit" name="submit" value="Search" class="btn btn-info form-control">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -82,8 +86,8 @@
                                     @Html.DisplayFor(m => item.OrderDetails.Count)
                                 </td>
                                 <td>
-                                    <button type="button" class="goldButton anchorDetail" data-id="@item.OrderHeader.Id" data-toggle="modal">
-                                        <i class="far fa-list-alt"></i>&nbsp;SZCZEGÓŁY
+                                    <button type="button" class="btn btn-success anchorDetail" data-id="@item.OrderHeader.Id" data-toggle="modal">
+                                        <i class="far fa-list-alt"> Szczegóły</i>
                                     </button>
                                 </td>
                             </tr>
@@ -106,7 +110,7 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog-centered modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-light" style="background-color:#534741;">
+                <div class="modal-header bg-success text-light">
                     <div class="col-10 offset-1">
                         <center><h5 class="modal-title">Szczegóły zamówienia</h5></center>
                     </div>

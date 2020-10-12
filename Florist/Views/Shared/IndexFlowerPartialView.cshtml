@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Flower>
 
 
-    <div style="font-family:'Playfair Display', serif;">
+    <div >
         @if (Model.Count() > 0)
         {
             @foreach (var item in Model)
             {
                 <a asp-action="Details" asp-route-Id="@item.Id" class="recommend">
                     <img src="@Html.DisplayFor(m => item.Image)" alt="photo">
-                    <div class="goldColor">@Html.DisplayFor(m => item.Name)</div>
+                    <div style="color: mediumseagreen;">@Html.DisplayFor(m => item.Name)</div>
                     <div style="font-size: 15px; color: black; font-weight:500;" class="text-truncate">@Html.DisplayFor(m => item.Description)</div>
                     <div style="color: black">@Html.DisplayFor(m => item.Price) PLN</div>
                 </a>

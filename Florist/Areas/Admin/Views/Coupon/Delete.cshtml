@@ -2,56 +2,52 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
-    <div class="col-12 col-md-10 offset-md-1 mb-5">
-        <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Usuń</h1>
-        <hr />
-        <form asp-action="Delete">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Name" class="control-label"></label>
-                </div>
-                <div class="col-5">
-                    <input disabled asp-for="Name" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="CouponType" class="control-label"></label>
-                </div>
-                <div class="col-5">
-                    <select disabled asp-for="CouponType" asp-items="Html.GetEnumSelectList<Coupon.ECouponType>()" class="form-control"></select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Discount" class="control-label"></label>
-                </div>
-                <div class="col-5">
-                    <input disabled asp-for="Discount" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="MinimumAmount" class="control-label"></label>
-                </div>
-                <div class="col-5">
-                    <input disabled asp-for="MinimumAmount" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="isActive" class="control-label"></label>
-                </div>
-                <div class="col-5">
-                    <input disabled type="checkbox" asp-for="isActive" class="form-control" />
-                </div>
-            </div>
-            <br />
-            <div class="form-group row">
-                <input type="submit" value="USUŃ" class="goldButton col-2" />
-                <a asp-action="Index" class="brownButton col-2 offset-1">POWRÓT</a>
-            </div>
-        </form>
+<br />
+<form asp-action="Delete">
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Name" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input disabled asp-for="Name" class="form-control" />
+        </div>
     </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="CouponType" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <select disabled asp-for="CouponType" asp-items="Html.GetEnumSelectList<Coupon.ECouponType>()" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Discount" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input disabled asp-for="Discount" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="MinimumAmount" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input disabled asp-for="MinimumAmount" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="isActive" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input disabled type="checkbox" asp-for="isActive" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <div class="form-group row">
+        <input type="submit" value="Usuń" class="btn btn-danger form-control col-2" />
+        <a asp-action="Index" class="btn btn-success text-white form-control col-2 offset-1">Powrót</a>
+    </div>
+</form>
 

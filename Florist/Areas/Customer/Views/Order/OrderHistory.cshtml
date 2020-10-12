@@ -9,11 +9,11 @@
 <div class="col-10 offset-1">
     <div class="row">
         <div class="col-6">
-            <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Historia zamówień</h1>
+            <h1 style="color: mediumseagreen;">Historia zamówień</h1>
         </div>
     </div>
     <hr />
-    <div style="overflow-x: auto">
+    <div>
         @if (Model.Orders.Count() > 0)
         {
             <table class="table table-striped border">
@@ -62,14 +62,14 @@
                     @Html.DisplayFor(m => item.OrderDetails.Count)
                 </td>
                 <td>
-                    <button type="submit" class="goldButton anchorDetail" data-id="@item.OrderHeader.Id" data-toggle="modal">
-                        <i class="far fa-list-alt"></i>&nbsp; SZCZEGÓŁY
+                    <button type="submit" class="btn btn-success anchorDetail" data-id="@item.OrderHeader.Id" data-toggle="modal">
+                        <i class="far fa-list-alt"> Szczegóły</i>
                     </button>
                     @if (item.OrderHeader.Status == SD.StatusSubmitted || item.OrderHeader.Status == SD.StatusInProcess || item.OrderHeader.Status == SD.StatusCompleted || item.OrderHeader.Status == SD.StatusReady)
                     {
-                    <button type="button" class="brownButton btnOrderStatus" data-id="@item.OrderHeader.Id" data-toggle="modal">
-                        <i class="far fa-clock"></i>&nbsp; STATUS
-                    </button>
+                        <button type="button" class="btn btn-info btnOrderStatus" data-id="@item.OrderHeader.Id" data-toggle="modal">
+                            <i class="far fa-clock"></i> Status
+                        </button>
                     }
                 </td>
             </tr>
@@ -91,7 +91,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog-centered modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-light" style="background-color: #534741">
+            <div class="modal-header bg-success text-light">
                 <div class="col-10 offset-1">
                     <center><h5 class="modal-title">Szczegóły zamówienia</h5></center>
                 </div>
@@ -110,7 +110,7 @@
 <div class="modal fade" id="myOrderStatus" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog-centered modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-light" style="background-color: #534741;">
+            <div class="modal-header bg-success text-light">
                 <div class="col-10 offset-1">
                     <center><h5 class="modal-title">Status</h5></center>
                 </div>

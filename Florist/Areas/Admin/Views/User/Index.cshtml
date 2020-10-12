@@ -7,13 +7,13 @@
 
 <br />
 <br />
-<div class="backgroundWhite col-10 offset-1 mb-5">
+<div class="border backgroundWhite col-10 offset-1 mb-5">
     <div class="row">
         <div class="col-6">
-            <h1 style="font-family:'Playfair Display', serif;" class="goldColor">Lista użytkowików</h1>
+            <h2 class="text-info"> Users List</h2>
         </div>
-        <div class="col-6 text-right pt-3">
-            <a asp-area="Identity" asp-controller="Account" asp-action="Register" class="goldButton">&nbsp;<i class="fas fa-plus"></i>&nbsp; Rejestracja nowego pracownika &nbsp;</a>
+        <div class="col-6 text-right">
+            <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info"><i class="fas fa-plus"></i> &nbsp; Rejestracja nowego pracownika</a>
         </div>
     </div>
     <br />
@@ -29,8 +29,9 @@
                         @Html.DisplayNameFor(m => m.Email)
                     </th>
                     <th>
-                        Nr telefonu
+                        @Html.DisplayNameFor(m => m.PhoneNumber)
                     </th>
+                    <th></th>
                     <th></th>
                 </tr>
                 @foreach (var item in Model)
