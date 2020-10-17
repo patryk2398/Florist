@@ -54,14 +54,13 @@ namespace Florist.Data
                 httpClient.DefaultRequestHeaders.TryAddWithoutValidation("authorization", tokenType + " " + accessToken);
 
                 using (var content = new StringContent(
-                    "{  \"notifyUrl\": \"https://localhost:44307/Customer/Order/Confirm/" + detailsCard.OrderHeader.Id+"\", " +
+                    "{  \"notifyUrl\": \"https://kwiaciarniajaworski.azurewebsites.net/Customer/Order/Confirm/" + detailsCard.OrderHeader.Id+"\", " +
                     " \"customerIp\": \"" + ip + "\",  " +
                     "\"merchantPosId\": \"395609\",  " +
                     "\"description\": \"Florist shop\",  " +
                     "\"currencyCode\": \"PLN\",  " +
-                    " \"extOrderId\": \"" + detailsCard.OrderHeader.Id.ToString() + "\",  " +
                     "\"totalAmount\": \"" + (detailsCard.OrderHeader.OrderTotal * 100).ToString() + "\",  " +
-                    " \"continueUrl\": \"https://localhost:44307/Customer/Order/Confirm/" + detailsCard.OrderHeader.Id+"\",  " +
+                    " \"continueUrl\": \"https://kwiaciarniajaworski.azurewebsites.net/Customer/Order/Confirm/" + detailsCard.OrderHeader.Id+"\",  " +
                     "\"buyer\": " +
                     "{" +
                     "\"email\": \"" + detailsCard.OrderHeader.ApplicationUser.Email + "\"," +

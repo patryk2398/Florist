@@ -28,7 +28,7 @@ namespace Florist.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var Flower = await _db.Flower.ToListAsync();
+            var Flower = await _db.Flower.Where(u => u.Balloon_Gift == true).ToListAsync();
 
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
